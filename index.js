@@ -362,7 +362,7 @@
                         + '<thead><tr><th></th>'
                         +'<th><i class="fa fa-building-o header" title="Nombre d\'établissements par million d\'habitants" data-placement="top"></i></th>'
                         +'<th><i class="fa fa-group header" title="Indice de fréquentation" data-placement="top"></i></th>'
-                        +'<th><i class="fa fa-euro header" title="Subvention" data-placement="top"></i></th>' + '</tr></thead><tbody>';
+                        +'<th><i class="fa fa-euro header" title="Indice de subvention" data-placement="top"></i></th>' + '</tr></thead><tbody>';
 
                 _.each(typeCriterion, function(criterion, index) {
                     var data = regionData[criterion];
