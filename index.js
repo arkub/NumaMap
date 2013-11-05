@@ -1,27 +1,19 @@
 (function(mapConfig) {
 
     var CONFIG = {
-        debug : false,
+        debug : true,
         maxZoom : 20,
         container : '#map-container',
-        dataUrls : [ './data/numa.html', './data/program.html',
-                './data/history.html',
-        // './data/info.html',
-        // './data/street-art.json',
-        // './data/example.html',
-        // './data/partners.html'
-        ],
+        dataUrls : [ './data/numa.html', './data/program.html', './data/history.html', './data/info.html',
+                'data/street-art.json', './data/example.html', './data/partners.html' ],
         tilesLayer : 'http://{s}.tile.cloudmade.com/d4fc77ea4a63471cab2423e66626cbb6/997/256/{z}/{x}/{y}.png',
-        tilesLayer : 'http://{s}.tiles.mapbox.com/v3/guilhemoreau.map-057le4on/{z}/{x}/{y}.png',
-        zone : [ [ 2.3474317789077754, 48.86851174046499 ],
-                [ 2.350752353668213, 48.86728022412167 ] ]
+        zone : [ [ -4.646484374999999, 49.69979984974196 ], [ 9.216796875, 42.1455697310095 ] ]
     };
 
     var TEMPLATE_DEFAULT_DESCRIPTION = ''
             + '<div data-type="<%=feature.geometry.type%>:<%=feature.properties.type%>">'
-            + '<h3><a href="javascript:void(0);" data-action-click="activateLayer"><%=feature.properties.label%></a></h3>'
-            + '<div class="visible-when-active">'
-            + ' <%=feature.properties.description%>'
+            + '<h3><a href="javascript:void(0);" data-action-click="activateLayer"><%=feature.properties.label||feature.properties.name%></a></h3>'
+            + '<div class="visible-when-active">' + ' <%=feature.properties.description%>'
             + ' <% if(feature.properties.references){ %><div class="references"><%=feature.properties.references%></div><% } %>'
             + '</div>' + '</div>';
     var TEMPLATE_DEFAULT_POPUP = '<strong data-action-click="activateLayer"><%=feature.properties.label||feature.properties.name%></strong>';
@@ -29,15 +21,11 @@
             + '<div id="<%=dialogId%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="<%=dialogId%>-title" aria-hidden="true">'
             + ' <div class="modal-header">'
             + ' <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'
-            + ' <h3 id="<%=dialogId%>-title"><%=feature.properties.label%></h3>'
-            + ' </div>'
-            + ' <div class="modal-body">'
+            + ' <h3 id="<%=dialogId%>-title"><%=feature.properties.label%></h3>' + ' </div>' + ' <div class="modal-body">'
             + ' <%=feature.properties.fullContent%>'
             + ' <% if(feature.properties.references){ %><div class="references"><%=feature.properties.references%></div><% } %>'
-            + ' </div>'
-            + '<div class="modal-footer">'
-            + '<button class="btn" data-dismiss="modal" aria-hidden="true">OK</button>'
-            + '</div>' + '</div>';
+            + ' </div>' + '<div class="modal-footer">'
+            + '<button class="btn" data-dismiss="modal" aria-hidden="true">OK</button>' + '</div>' + '</div>';
     var TEMPLATE_DEFAULT = {
         popup : TEMPLATE_DEFAULT_POPUP,
         description : TEMPLATE_DEFAULT_DESCRIPTION,
@@ -45,7 +33,7 @@
     }
     var TEMPLATE_DEFAULT_SLIDABLE = {
         dialog : '<% var dialogId=obj.getId("-dialog"); %>'
-                + '<div id="<%=dialogId%>" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="<%=dialogId%>-title" aria-hidden="true">'
+                + '<div id="<%=dialogId%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="<%=dialogId%>-title" aria-hidden="true">'
                 + ' <div class="modal-header">'
                 + ' <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'
                 + ' <h3 id="<%=dialogId%>-title"><%=feature.properties.label%></h3>'
@@ -54,20 +42,18 @@
                 + ' <% var next=obj.getNext();  var prev=obj.getPrevious(); %>'
                 + ' <div class="row-fluid">'
                 + '     <div class="span1">'
-                + '         <% if (prev){%><a href="javascript:void(0);" data-action-click="! var o=obj.getPrevious();if(o)o.expandLayer()"><div class="fa fa-chevron-left"></div></a>&nbsp;<% } %>'
+                + '         <% if (prev){%><button class="btn btn-mini" data-action-click="! var o=obj.getPrevious();if(o)o.expandLayer()">&laquo;</button><% } %>'
                 + '     </div>'
                 + '     <div class="span10">'
-                + '         <%=feature.properties.fullContent?feature.properties.fullContent:feature.properties.description%>'
+                + '         <%=feature.properties.fullContent%>'
                 + '     </div>'
                 + '     <div class="span1">'
-                + '         <% if (next){ %><a href="javascript:void(0);" data-action-click="! var o=obj.getNext();if(o)o.expandLayer()"><div class="fa fa-chevron-right"></div></a>&nbsp;<% } %>'
+                + '         <% if (next){ %><button class="btn btn-mini" data-action-click="! var o=obj.getNext();if(o)o.expandLayer()">&raquo;</button><% } %>'
                 + '     </div>'
                 + ' </div>'
                 + ' <% if(feature.properties.references){ %><div class="references"><%=feature.properties.references%></div><% } %>'
-                + ' </div>'
-                + '<div class="modal-footer">'
-                + '<button class="btn" data-dismiss="modal" aria-hidden="true">OK</button>'
-                + '</div>' + '</div>',
+                + ' </div>' + '<div class="modal-footer">'
+                + '<button class="btn" data-dismiss="modal" aria-hidden="true">OK</button>' + '</div>' + '</div>',
         description : ''
                 + '<div data-type="<%=feature.geometry.type%>:<%=feature.properties.type%>">'
                 + '<h3><a href="javascript:void(0);" data-action-click="activateLayer"><%=feature.properties.label||feature.properties.name%></a></h3>'
@@ -75,13 +61,13 @@
                 + ' <% var next=obj.getNext();  var prev=obj.getPrevious(); %>'
                 + ' <div class="row-fluid">'
                 + '     <div class="span1">'
-                + '         <% if (prev){%><a href="javascript:void(0);" data-action-click="! var o=obj.getPrevious();if(o)o.activateLayer()"><div class="fa fa-chevron-left"></div></a>&nbsp;<% } %>'
+                + '         <% if (prev){%><a href="javascript:void(0);" class="btn btn-mini" data-action-click="! var o=obj.getPrevious();if(o)o.activateLayer()">&laquo;</a><% } %>'
                 + '     </div>'
                 + '     <div class="span10">'
                 + '         <%=feature.properties.description%>'
                 + '     </div>'
                 + '     <div class="span1">'
-                + '         <% if (next){ %><a href="javascript:void(0);" data-action-click="! var o=obj.getNext();if(o)o.activateLayer()"><div class="fa fa-chevron-right"></div></a>&nbsp;<% } %>'
+                + '         <% if (next){ %><a href="javascript:void(0);" class="btn btn-mini" data-action-click="! var o=obj.getNext();if(o)o.activateLayer()">&raquo;</a><% } %>'
                 + '     </div>'
                 + ' </div>'
                 + ' <% if(feature.properties.references){ %><div class="references"><%=feature.properties.references%></div><% } %>'
@@ -102,163 +88,42 @@
         }
     }
     var TEMPLATES = {
-        ':group' : {
-            description : '<div><h2><%=feature.properties.label%></h2></div>'
-        },
         'Point' : tmpl({
             updateLayer : function(info) {
-                var layer = info.getMapLayer();
-                setDivIcon(layer, '<div class="fa fa-map-marker fa-lg"'
-                        + ' style="color: yellow;"></div>');
+                var layer = info.getLayer();
+                setDivIcon(layer, '<i class="fa fa-map-marker fa-lg"' + ' style="color: #00adef;"></i>');
             }
         }),
-        'Point:wc' : {
-            popup : '<strong>WC</strong>',
-            updateLayer : function(info) {
-                var layer = info.getMapLayer();
-                setDivIcon(
-                        layer,
-                        '<span style="color: maroon; white-space: nowrap;">'
-                                + '<div class="fa fa-male fa-lg"></div>'
-                                + '<div class="fa fa-female fa-lg"></div></span>');
-            }
-        },
-        'Point:security' : {
-            popup : '<div><strong>Agent de sécurité</strong></div>',
-            updateLayer : function(info) {
-                var layer = info.getMapLayer();
-                setDivIcon(layer,
-                        '<div class="fa fa-star-o" style="color: red;"></div>');
-            }
-        },
         'Point:sos' : {
             popup : '<strong>Poste de secours</strong>',
             updateLayer : function(info) {
-                var layer = info.getMapLayer();
-                setDivIcon(layer,
-                        '<div class="fa fa-plus-square" style="color: red;"></div>');
+                var layer = info.getLayer();
+                setDivIcon(layer, '<i class="fa fa-plus-square" style="color: red;"></i>');
             }
         },
-        'Point:screen' : tmpl({
-            updateLayer : function(info) {
-                var layer = info.getMapLayer();
-                setDivIcon(layer,
-                        '<div class="fa fa-film fa-lg" style="color: white;"></div>');
-            }
-        }),
-        'Point:sculpture' : tmpl(
-                TEMPLATE_DEFAULT_SLIDABLE,
-                {
-                    updateLayer : function(info) {
-                        var layer = info.getMapLayer();
-                        setDivIcon(layer,
-                                '<div class="fa fa-star fa-lg" style="color: yellow;"></div>');
-                    }
-                }),
-        'Point:address' : tmpl(
-        // TEMPLATE_DEFAULT_SLIDABLE,
-        {
-            updateLayer : function(info) {
-                var layer = info.getMapLayer();
-                setDivIcon(layer,
-                        '<div class="fa fa-star fa-lg" style="color: yellow;"></div>');
-            }
-        }),
         'Point:cafe' : tmpl({
             updateLayer : function(info) {
-                var layer = info.getMapLayer();
-                setDivIcon(layer,
-                        '<div class="fa fa-glass fa-lg" style="color: white;"></div>');
-            }
-        }),
-        'Point:artist' : tmpl({
-            updateLayer : function(info) {
-                var layer = info.getMapLayer();
-                var icon = L
-                        .divIcon({
-                            className : '',
-                            html : '<div class="fa fa-lightbulb-o fa-lg" style="color: #fff200;"></div>'
-                        });
-                layer.setIcon(icon);
+                var layer = info.getLayer();
+                setDivIcon(layer, '<i class="fa fa-glass fa-lg" style="color: white;"></i>');
             }
         }),
         'Point:atelier' : tmpl({
             updateLayer : function(info) {
-                var layer = info.getMapLayer();
-                var icon = L
-                        .divIcon({
-                            className : '',
-                            html : '<div class="fa fa-lightbulb-o fa-lg" style="color: #fff200;"></div>'
-                        });
+                var layer = info.getLayer();
+                var icon = L.divIcon({
+                    className : '',
+                    html : '<i class="fa fa-lightbulb-o fa-lg" style="color: #fff200;"></i>'
+                });
                 layer.setIcon(icon);
             }
         }),
-        'Point:organization' : tmpl({
-            description : '<div data-type="<%=feature.geometry.type%>:<%=feature.properties.type%>">'
-                    + '<h3><a href="javascript:void(0);" data-action-click="activateLayer"><%=feature.properties.label||feature.properties.name%></a></h3>'
-                    + '<div class="visible-when-active">'
-                    + '<div class="pull-right"><%=feature.properties.address%></div>'
-                    + '<div style="clear:both;"><%=feature.properties.description%></div>'
-                    + '<% if(feature.properties.references){ %><div class="references"><%=feature.properties.references%></div><% } %>'
-                    + '</div>' + '</div>',
-            updateLayer : function(info) {
-                var layer = info.getMapLayer();
-                var icon = L
-                        .divIcon({
-                            className : '',
-                            html : '<div class="fa fa-glass fa-lg" style="color: white;"></div>'
-                        });
-                layer.setIcon(icon);
-            }
-        }),
-        'Point:photo' : {
-            baseUrl : 'http://ubimix.com:8040/data/images/', // '/data/images/',
-            popup : '<span><a href="javascript:void(0);" data-action-click="expandLayer"><img src="<%=template.baseUrl%><%= feature.properties.urls[0] %>" style="width:200px;"/></a></span>',
-            dialog : '<% var dialogId=obj.getId("-dialog"); %>'
-                    + '<div id="<%=dialogId%>" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="<%=dialogId%>-title" aria-hidden="true">'
-                    + ' <% var next=obj.getNext();  var prev=obj.getPrevious(); %>'
-                    + ' <div class="modal-header">'
-                    + ' <div class="row-fluid">'
-                    + '     <div class="span10 thumbnails">'
-                    + '         <% if (feature.properties.label) { %>'
-                    + '         <h3 id="<%=dialogId%>-title"><%=feature.properties.label%></h3>'
-                    + '         <% } %>'
-                    + '     </div>'
-                    + '     <div class="span2">'
-                    + '         <span class="pull-right">'
-                    + '         <% if (prev){%><a href="javascript:void(0);" data-action-click="! var o=obj.getPrevious();if(o)o.expandLayer()"><div class="fa fa-chevron-left"></div></a>&nbsp;<% } %>'
-                    + '         <% if (next){ %><a href="javascript:void(0);" data-action-click="! var o=obj.getNext();if(o)o.expandLayer()"><div class="fa fa-chevron-right"></div></a>&nbsp;<% } %>'
-                    + '         <a type="button" data-dismiss="modal" aria-hidden="true" href="javascript:void(0);"><div class="fa fa-times"></div></a>'
-                    + '         </span>'
-                    + '     </div>'
-                    + ' </div>'
-                    + ' </div>'
-                    + ' <div class="modal-body">'
-                    + ' <div class="row-fluid">'
-                    + '     <div class="span12 pagination-centered text-center well">'
-                    + '         <img src="<%=template.baseUrl%><%= feature.properties.urls[0] %>"/>'
-                    + '     </div>'
-                    + ' </div>'
-                    + ' <% if(feature.properties.references){ %><div class="references"><%=feature.properties.references%></div><% } %>'
-                    + ' </div>'
-                    + '<div class="modal-footer">'
-                    + '<button class="btn" data-dismiss="modal" aria-hidden="true">OK</button>'
-                    + '</div>' + '</div>',
-            updateLayer : function(info) {
-                var layer = info.getMapLayer();
-                setDivIcon(
-                        layer,
-                        '<span style="color: white; white-space: nowrap;">'
-                                + '<div class="fa fa-picture-o fa-lg"></div></span>');
-            }
-        },
         'LineString' : {
             description : '<div><%=feature.properties.description%></div>'
         },
         'LineString:barrage' : {
             popup : '<div>Barrage</div>',
             updateLayer : function(info) {
-                var layer = info.getMapLayer();
+                var layer = info.getLayer();
                 _.extend(layer.options, {
                     color : 'red',
                     dashArray : '5,5',
@@ -268,71 +133,23 @@
         },
         'LineString:passage' : tmpl(TEMPLATE_DEFAULT_SLIDABLE, {
             updateLayer : function(info) {
-                var layer = info.getMapLayer();
+                var layer = info.getLayer();
                 _.extend(layer.options, {
                     color : 'yellow',
                     dashArray : '5,5',
-                    opacity : 0.5,
+                    opacity : 0.1,
                     weight : 5
-                });
-            }
-        }),
-        'LineString:rue' : tmpl(TEMPLATE_DEFAULT_SLIDABLE, {
-            updateLayer : function(info) {
-                var layer = info.getMapLayer();
-                _.extend(layer.options, {
-                    opacity : 0.5,
-                    color : 'yellow',
-                    weight : 10
-                });
-            }
-        }),
-        'LineString:installation' : tmpl({
-            updateLayer : function(info) {
-                var layer = info.getMapLayer();
-                _.extend(layer.options, {
-                    opacity : 1,
-                    color : 'green',
-                    weight : 3
                 });
             }
         }),
         'Polygon' : tmpl({
             updateLayer : function(info) {
-                var layer = info.getMapLayer();
+                var layer = info.getLayer();
                 _.extend(layer.options, {
                     color : 'yellow',
                     weight : 1,
                     fillOpacity : 0.1,
                     opacity : 0.1
-                });
-            }
-        }),
-        'Polygon:place' : tmpl(TEMPLATE_DEFAULT_SLIDABLE, {
-            updateLayer : function(info) {
-                var layer = info.getMapLayer();
-                _.extend(layer.options, {
-                    opacity : 0.1,
-                    fillOpacity : 0.1,
-                    color : 'yellow'
-                });
-            }
-        }),
-        'Polygon:numa' : tmpl({
-            description : '<div class="numa" data-type="<%=feature.geometry.type%>:<%=feature.properties.type%>">'
-                    + '<h3><a href="javascript:void(0);" data-action-click="activateLayer"><img src="./data/images/numa/Logo_NUMA.png" /></a></h3>'
-                    + '<div class="visible-when-active">'
-                    + ' <%=feature.properties.description%>'
-                    + ' <% if(feature.properties.references){ %><div class="references"><%=feature.properties.references%></div><% } %>'
-                    + '</div>' + '</div>',
-            popup : '<div><h3 data-action-click="activateLayer">NUMA</h3></div>',
-            updateLayer : function(info) {
-                var layer = info.getMapLayer();
-                _.extend(layer.options, {
-                    color : '#ec008c',
-                    weight : 1,
-                    fillOpacity : 0.7,
-                    opacity : 0.8
                 });
             }
         }),
@@ -342,7 +159,7 @@
             // + '<%=feature.properties.label%>'
             // + '</a></strong></div></div>',
             updateLayer : function(info) {
-                var layer = info.getMapLayer();
+                var layer = info.getLayer();
                 _.extend(layer.options, {
                     color : '#00adef',
                     fillColor : '#00adef',
@@ -370,100 +187,23 @@
     }
 
     /**
-     * Parses the specified HTML content and transforms it into a valid GeoJSON
-     * feature object
-     */
-    function parseHTML(url, data) {
-        var str = '' + data;
-        var e = $('<div></div>').append(data);
-        var features = [];
-        var json = {
-            id : url,
-            type : "FeatureCollection",
-            features : features
-        };
-        var label = e.find('title').text();
-        json.label = label;
-        var meta = e.find('meta[name="visible"]');
-        var visible = meta.attr('content') == 'true';
-        json.visible = visible;
-        function isEmpty(str) {
-            return !str || str.replace(/^s+|\s+$/gi, '') == '';
-        }
-        function copy(value, to, toProperty) {
-            if (value === undefined)
-                return null;
-            if (_.isString(value)) {
-                value = value.replace(/^\s*|\s*$/gim, '')
-                        .replace(/\s+/gim, ' ');
-                if (value == '')
-                    return null;
-            }
-            to[toProperty] = value;
-            return value;
-        }
-        e.find('article').each(function() {
-            article = $(this);
-            var address = article.find('address');
-            var geometry = {};
-            // Copies the type of this marker
-            copy(address.data('geometry'), geometry, 'type');
-            // Copies coordinates
-            copy(address.data('coordinates'), geometry, 'coordinates');
-
-            // Transforms all 'data-xxx' attributes of the "address" element
-            // into a set of options
-            var options = {};
-            var hasOptions = false;
-            var addrElm = address[0];
-            if (addrElm) {
-                $.each(addrElm.attributes, function(index, attr) {
-                    var name = attr.name;
-                    if (name != 'data-geometry' && name != 'data-coordinates') {
-                        hasOptions = true;
-                        name = name.substring('data-'.length);
-                        options[name] = attr.value;
-                    }
-                })
-            }
-            if (hasOptions) {
-                copy(options, geometry, 'options');
-            }
-
-            var properties = {
-                type : article.data('type')
-            } // 
-            var feature = {
-                type : "Feature",
-                geometry : geometry,
-                properties : properties
-            };
-            features.push(feature);
-            // Fill individual properties
-            copy(address.html(), properties, 'address');
-            copy(article.find('header').text(), properties, 'label');
-            copy(article.find('aside').html(), properties, 'description');
-            copy(article.find('section').html(), properties, 'fullContent');
-            copy(article.find('footer').html(), properties, 'references');
-            // console.log(' * ', JSON.stringify(feature))
-        })
-        return json;
-    }
-
-    /**
      * Loads data and visualizes them on the map. This method is called when the
      * DOM construction is finished.
      */
     $(function() {
         var map = new NumaMap(CONFIG, TEMPLATES);
+        var stats = null;
+        var regions = {};
+        var regionLayerGroup = null;
+        var sortField = 'offreRel';
         /**
          * This method is used to re-size the map element to fit to the screen.
          * It is called each time when the main window changes its size.
          */
         function updateSize() {
             var container = $(CONFIG.container);
-            var shift = container.find('.navbar').height() || 0;
-            shift += 20;
+            var shift = container.find('.banner').height() || 0;
+            // shift += 20;
             var height = $(window).height() - shift;
             container.find('.map-block').each(function() {
                 var el = $(this);
@@ -473,33 +213,259 @@
             return Q();
         }
 
-        $(window).resize(_.throttle(updateSize, 100));
-        Q
-        // Loads data for all map layers
-        .all(_.map(CONFIG.dataUrls, function(url) {
-            return load(url).then(function(data) {
-                if (_.isObject(data)) {
-                    return data;
-                }
-                var str = data + '';
-                var obj = parseHTML(url, str);
-                return obj;
-            });
-        }))
-        // Visualize data for all layers on the map
-        .then(function(layersData) {
-            _.each(layersData, function(data) {
-                map.addFeatureGroup(data);
+        function scrollIntoView($element, $scroller, delta, duration) {
+            delta = delta || 0;
+            duration = duration || 0;
+            if (duration) {
+                $scroller.animate({
+                    'scrollTop' : $element.position().top - delta
+                });
+            } else {
+                $scroller.scrollTop($element.position().top - delta);
+            }
+        }
+
+        function focusDescription(featureId) {
+            //var featureId = this.getId();
+            var element = $('#stats-region-' + featureId);
+            //var element = $('#' + featureId);
+//            if (!element[0])
+//                return;
+            var cls = 'feature-active';
+            var container = $('.scrollable');
+            container.find('.' + cls).each(function() {
+                $(this).removeClass(cls);
             })
-        })
-        // Refresh the map size after the data loading is finished
-        .then(function() {
-            updateSize();
-        })
-        // Handle errors
-        .fail(function(error) {
-            console.log('LOADING ERROR:', error)
-        }).done();
+            var top = element.position().top + container.scrollTop() - container.position().top;
+            container.animate({
+                scrollTop : top
+            }, 300);
+            element.addClass(cls);
+        }
+        
+        function drawRegions() {
+            if (regionLayerGroup) {
+                map.getMap().removeLayer(regionLayerGroup);
+            }
+            regionLayerGroup = L.featureGroup();
+
+            _.each(regions, function(departments, region) {
+                var natureCriterion = sortField;
+                var color = getNatureColors()[natureCriterion];
+                var score = computeRegionScore(stats[region], getTypeCriterion(), sortField);
+                var regionScores = sortRegions(getTypeCriterion(), sortField);
+                var topScore = regionScores[0][1];
+                var normalizedScore = score / topScore;
+
+                _.each(regions[region], function(department, index) {
+                    var geojsonFeature = {
+                        'type' : 'Feature'
+                    };
+                    geojsonFeature.geometry = department.geom;
+
+                    var myStyle = {
+                        'color' : 'white',
+                        'weight' : 2,
+                        'fillColor' : color,
+                        'opacity' : normalizedScore,
+                        'fillOpacity' : normalizedScore
+                    };
+
+                    var geoJsonLayer = L.geoJson(geojsonFeature, {
+                        'style' : myStyle,
+                        'regionId' : region
+                    });
+                    regionLayerGroup.addLayer(geoJsonLayer);
+
+                    geoJsonLayer.on('click', function() {
+                        focusDescription(this.options.regionId);
+                    });
+
+                });
+
+            });
+            regionLayerGroup.addTo(map.getMap());
+        }
+
+        function computeRegionScore(regionData, typeCriterion, sortField) {
+            var score = 0;
+            _.each(typeCriterion, function(criterion, index) {
+                if (regionData[criterion] != undefined && regionData[criterion][sortField]) {
+                    score += regionData[criterion][sortField];
+                } else if (regionData[criterion] != undefined && sortField=='offreRel' && regionData[criterion]['offreAbs']) {
+                    score += regionData[criterion]['offreAbs'] / regionData['population'];
+                }
+            });
+            return score;
+        }
+
+        function sortRegions(typeCriterion, natureCriterion) {
+            var regionScores = [];
+            _.each(stats, function(regionStat, regionKey) {
+                var score = computeRegionScore(regionStat, typeCriterion, natureCriterion);
+                regionScores.push([ regionStat, score ]);
+            });
+
+            var sortedRegionScores = _.sortBy(regionScores, function(regionScore) {
+                return regionScore[1];
+            }).reverse();
+            return sortedRegionScores;
+
+            // var regionList = _.map(stats, function(value, key) {
+            // return value;
+            // });
+
+            // var regionList = _.map(stats, function(value, key) {
+            // return value;
+            // });
+            //
+            // var sortedRegions = _.sortBy(regionList, function(regionData) {
+            // return computeRegionScore(regionData, typeCriterion,
+            // natureCriterion);
+            // }).reverse();
+            // return sortedRegions;
+        }
+
+        function getTypeCriterion() {
+            var criteria = [];
+            _.each($('.types button'), function(button) {
+                var elt = $(button);
+                var isActive = elt.hasClass('active');
+                if (isActive) {
+                    criteria.push(elt.data('type'));
+                }
+            });
+
+            return criteria;
+        }
+
+        function getNatureColors() {
+            var natureColors = {};
+            _.each($('.sort'), function(button) {
+                var elt = $(button);
+                natureColors[elt.data('sort')] = elt.data('color');
+            });
+            return natureColors;
+
+        }
+
+        function updateView() {
+
+            drawRegions();
+            $('.stats').html('');
+            var typeCriterion = getTypeCriterion();
+            var natureCriterion = sortField;
+            var sortedRegions = sortRegions(typeCriterion, natureCriterion);
+            _.each(sortedRegions, function(data, index) {
+                var regionData = data[0];
+                var tableStat = '<table class="table">'
+                        + '<thead><tr><th></th>'
+                        +'<th><i class="fa fa-building-o header" title="Nombre d\'établissements par million d\'habitants" data-placement="top"></i></th>'
+                        +'<th><i class="fa fa-group header" title="Indice de fréquentation" data-placement="top"></i></th>'
+                        +'<th><i class="fa fa-euro header" title="Subvention" data-placement="top"></i></th>' + '</tr></thead><tbody>';
+
+                _.each(typeCriterion, function(criterion, index) {
+                    var data = regionData[criterion];
+                    if (data) {
+                        var icon = '';
+                        if (criterion == 'musees')
+                            icon = '<i class="fa fa-home" title="Musées" data-placement="top"></i>';
+                        else if (criterion == 'cinemas')
+                            icon = '<i class="fa fa-film" title="Cinémas" data-placement="top"></i>';
+                        else if (criterion == 'bibliotheques')
+                            icon = '<i class="fa fa-book" title="Bibliothèques" data-placement="top"></i>';
+                        else if (criterion == 'artetessai')
+                            icon = '<i class="fa fa-video-camera" title="Cinémas d\'art et essai" data-placement="top"></i>';
+                        tableStat += '<tr><td>'+icon+'</td>';
+                        if (data['offreRel']) {
+                            tableStat += '<td>' + Math.round(data['offreRel'] * 1000000) + '</td>';
+                        } else {
+                            var pop = regionData['population'];
+                            var offreAbs = data['offreAbs'];
+                            if (offreAbs != undefined)
+                                tableStat += '<td>'+Math.round(offreAbs/pop * 1000000) +'</td>';
+                            else
+                                tableStat += '<td></td>';
+                        }
+                        tableStat += '<td>' + Math.round(data['freqRel'] * 10) + '</td>';
+                        tableStat += '<td>' + Math.round(data['depensesRel']) + '</td></tr>';
+                    }
+                });
+
+                tableStat += '</tbody></table>';
+
+                var div = $('<div class="stats-table" id="stats-region-' + regionData.id + '"></div>');
+                div.append('<h3>'+(index+1)+'. ' + regionData.nom + '</h3>');
+                div.append(tableStat);
+                
+                $('.stats').append(div);
+
+            });
+
+        }
+
+        $('.types button').on('click', function(event) {
+
+            // https://github.com/twbs/bootstrap/issues/2380#issuecomment-27489772
+            event.stopImmediatePropagation();
+            $(this).button('toggle');
+
+            var typeCriterion = getTypeCriterion();
+            if (typeCriterion.length == 0) {
+                alert("Au moins un type d'établissement doit être sélectionné.");
+                $(this).button('toggle');
+            }
+            updateView();
+        });
+
+        $('.natures button').on('click', function(event) {
+            var criteria = [];
+            // https://github.com/twbs/bootstrap/issues/2380#issuecomment-27489772
+            event.stopImmediatePropagation();
+            $(this).button('toggle');
+            updateView();
+        });
+        
+        $('.sort').on('click', function(event) {
+            var criteria = [];
+            // https://github.com/twbs/bootstrap/issues/2380#issuecomment-27489772
+            //event.stopImmediatePropagation();
+            //$(this).button('toggle');
+            sortField = $(event.currentTarget).data('sort');
+            updateView();
+            
+        });
+
+
+        $.ajax({
+            dataType : 'json',
+            url : './data/geoflar-departements.json',
+            success : function(data) {
+                _.each(data, function(item, index) {
+                    var region = item.fields.code_reg;
+                    if (!regions[region]) {
+                        regions[region] = [];
+                    }
+                    regions[region].push(item.fields);
+
+                });
+
+                $.ajax({
+                    dataType : 'json',
+                    url : './data/data.json',
+                    success : function(data) {
+                        stats = data;
+                        updateView();
+                        updateSize();
+                        $('.types').tooltip();
+                        $('.header').tooltip();
+                    }
+
+                });
+
+            }
+        });
+
     });
 
     /* ---------------------------------------------------------------------- */
@@ -508,7 +474,24 @@
     function FeatureInfo(options) {
         var that = this;
         this.options = options;
-        this.setMapLayer(options.layer);
+        var template = that.getTemplate();
+        if (template && template.updateLayer) {
+            template.updateLayer(that);
+        }
+        var layer = this.getLayer();
+        layer.on('mouseover', function(e) {
+            that.setLatLng(e.latlng);
+            that.focusLayer({
+                layer : that
+            });
+        });
+        layer.on('click', function(e) {
+            that.setLatLng(e.latlng);
+            that.activateLayer({
+                layer : that
+            });
+        })
+
     }
     _.extend(FeatureInfo.prototype, {
 
@@ -563,32 +546,8 @@
         },
 
         /** Returns a map layer associated with this feature */
-        getMapLayer : function() {
+        getLayer : function() {
             return this.options.layer;
-        },
-
-        /** Sets a new map layer */
-        setMapLayer : function(layer) {
-            var that = this;
-            that.options.layer = layer;
-            if (layer) {
-                layer.on('mouseover', function(e) {
-                    that.setLatLng(e.latlng);
-                    that.focusLayer({
-                        layer : that
-                    });
-                });
-                layer.on('click', function(e) {
-                    that.setLatLng(e.latlng);
-                    that.activateLayer({
-                        layer : that
-                    });
-                })
-                var template = that.getTemplate();
-                if (template && template.updateLayer) {
-                    template.updateLayer(that);
-                }
-            }
         },
 
         /** Returns the internal feature (as a JSON object) */
@@ -608,15 +567,14 @@
         },
 
         /** Process the specified template and returns the result */
-        _processTemplate : function(str, options) {
+        _processTemplate : function(str) {
             if (!str)
                 return null;
             var feature = this.getFeature();
-            options = _.extend({
+            var result = _.template(str, {
                 obj : this,
                 feature : feature
-            }, (options || {}));
-            var result = _.template(str, options)
+            })
             return result;
         },
 
@@ -626,14 +584,13 @@
             if (!template)
                 return null;
             var str = template[field];
-            var html = this._processTemplate(str, {
-                template : template
-            });
+            var html = this._processTemplate(str);
             html = $(html);
 
             var that = this;
             function bindActions(e, event) {
                 var action = e.attr('data-action-' + event);
+                console.log('ACTION:', e, action)
                 if (!action)
                     return;
                 var method = null;
@@ -693,16 +650,16 @@
             if (!element[0])
                 return;
             var cls = 'feature-active';
-            var container = this.getApp().getListContainer();
-            container.find('.' + cls).each(function() {
-                $(this).removeClass(cls);
-            })
-            var top = element.position().top + container.scrollTop()
-                    - container.position().top;
-            container.animate({
-                scrollTop : top
-            }, 300);
-            element.addClass(cls);
+            // var container = this.getApp().getListContainer();
+            // container.find('.' + cls).each(function() {
+            // $(this).removeClass(cls);
+            // })
+            // var top = element.position().top + container.scrollTop() -
+            // container.position().top;
+            // container.animate({
+            // scrollTop : top
+            // }, 300);
+            // element.addClass(cls);
         },
 
         /** Opens a popup window on the this feature. */
@@ -711,7 +668,7 @@
             var html = this.render('popup');
             if (html) {
                 var latlng = this.getLatLng();
-                var offset = new L.Point(9, -5);
+                var offset = new L.Point(0, -10);
                 var map = this.getMap();
                 new L.Rrose({
                     offset : offset,
@@ -726,10 +683,8 @@
 
         /** Closes already opened popups */
         closePopup : function() {
-            var layer = this.getMapLayer();
-            if (layer) {
-                layer.closePopup();
-            }
+            var layer = this.getLayer();
+            layer.closePopup();
             // ???
             var map = this.getMap();
             map.closePopup();
@@ -739,6 +694,7 @@
          * Opens a dialog box with additional information about this feature.
          */
         openDialog : function() {
+            console.log('openDialog')
             // var feature = this.getFeature();
             // if (!feature.properties.fullContent)
             // return;
@@ -790,12 +746,7 @@
             if (!feature)
                 return [];
             var geometry = feature.geometry || {};
-            var array = [];
-            if (geometry && geometry.type) {
-                array.push(geometry.type);
-            } else {
-                array.push('');
-            }
+            var array = [ (geometry.type || '') ];
             var properties = feature.properties || {};
             var type = properties.type || '';
             if (type != '') {
@@ -818,6 +769,8 @@
         },
         /** Expand layer information */
         expandLayer : function(e) {
+            console.log('expandLayer')
+
             var app = this.getApp();
             app._expandLayer(this._expandEvent(e));
         },
@@ -899,7 +852,7 @@
             delete this.groupLayer;
             var that = this;
             this._keys = null;
-            this.groupLayer = L.geoJson(null, {
+            this.groupLayer = L.geoJson(data, {
                 pointToLayer : function(featureData, latlng) {
                     var layer;
                     var options = featureData.geometry.options || {};
@@ -914,31 +867,20 @@
                         var str = array[0];
                         for ( var i = 1; i < array.length; i++) {
                             var segment = array[i];
-                            str += segment[0].toUpperCase()
-                                    + segment.substring(1);
+                            str += segment[0].toUpperCase() + segment.substring(1);
                         }
                         layer.options[str] = value;
                     })
                     return layer;
                 },
                 onEachFeature : function(feature, layer) {
-                    var info = that.features[feature.id];
-                    if (info) {
-                        info.setMapLayer(layer);
-                    }
-                }
-            });
-            _.each(data.features, function(feature) {
-                var info = new FeatureInfo({
-                    group : that,
-                    feature : feature
-                });
-                var id = info.getId();
-                that.features[id] = info;
-                feature.id = id;
-                if (feature.geometry && feature.geometry.coordinates
-                        && feature.geometry.type) {
-                    that.groupLayer.addData([ feature ]);
+                    var info = new FeatureInfo({
+                        group : that,
+                        feature : feature,
+                        layer : layer
+                    });
+                    var id = info.getId();
+                    that.features[id] = info;
                 }
             });
         },
@@ -966,13 +908,13 @@
                 var map = this.getMap();
                 map.addLayer(this.groupLayer);
             }
-            var container = this.getApp().getListContainer();
-            this.groupContainer = $('<div></div>');
-            container.append(this.groupContainer);
-            _.each(this.features, function(info) {
-                var html = info.renderDescription();
-                this.groupContainer.append(html);
-            }, this);
+            // var container = this.getApp().getListContainer();
+            // this.groupContainer = $('<div></div>');
+            // container.append(this.groupContainer);
+            // _.each(this.features, function(info) {
+            // var html = info.renderDescription();
+            // this.groupContainer.append(html);
+            // }, this);
             this.visible = true;
         },
 
@@ -1040,7 +982,7 @@
         this._featureGroups = {};
         this._groupVisibility = {};
         this._bindEvents();
-        this.getListContainer().html('')
+        // this.getListContainer().html('')
     }
     _.extend(NumaMap.prototype, L.Mixin.Events);
     _.extend(NumaMap.prototype, {
@@ -1081,8 +1023,7 @@
             // FIXME:
             var nav = $(this.config.container).find('.navbar .nav');
             if (data.label) {
-                var ref = $('<a href="javascript:void(0);"></a>').text(
-                        data.label);
+                var ref = $('<a href="javascript:void(0);"></a>').text(data.label);
                 var li = $('<li data-ref="' + groupId + '"></li>').append(ref);
                 nav.append(li);
                 ref.click(function(e) {
@@ -1159,36 +1100,6 @@
                 that._groupVisibilityBlocked = false;
                 that.fire('groupVisibilityChanged');
             })
-            that.on('layers:hide', function(e) {
-                if (that._centerMarker)
-                    return;
-
-                var center = e.center;
-                var minZoom = e.minZoom;
-                var circle = L.circleMarker(center, {
-                    // fillColor : 'yellow',
-                    fillOpacity : 0.1,
-                    weight : 20,
-                    color : 'white',
-                    opacity : 0.5,
-                    radius : 100
-                });
-                circle.on('click', function() {
-                    that._map.setView(center, minZoom);
-                })
-                var myIcon = L.divIcon({
-                    className : '',
-                // html : "<strong style='color: white; white-space:
-                // nowrap;'>C'est ici!</strong>"
-                });
-                var label = L.marker(center, {
-                    icon : myIcon
-                });
-                that._centerMarker = L.layerGroup([ circle, label ]);
-                that._map.addLayer(that._centerMarker);
-                that._groupVisibilityBlocked = true;
-                that.fire('groupVisibilityChanged');
-            })
             that.on('groupVisibilityChanged', function() {
                 _.each(that._featureGroups, function(group, groupId) {
                     var visible = that.getGroupVisibility(groupId);
@@ -1211,8 +1122,7 @@
                     return L.latLng(point[1], point[0]);
                 }
                 var zone = that.config.zone || [];
-                var bounds = L.latLngBounds(getLatLng(zone[0]),
-                        getLatLng(zone[1]));
+                var bounds = L.latLngBounds(getLatLng(zone[0]), getLatLng(zone[1]));
                 return bounds;
             }
             var element = $(that.config.container).find('.map');
@@ -1220,8 +1130,6 @@
             var map = L.map(element[0], {
                 loadingControl : true
             });
-            map.scrollWheelZoom.disable();
-            map.boxZoom.disable();
 
             L.tileLayer(that.config.tilesLayer, {
                 attribution : that.config.attribution,
@@ -1263,9 +1171,8 @@
             if (this.config.debug) {
                 var popup = L.popup();
                 map.on('click', function(e) {
-                    popup.setLatLng(e.latlng).setContent(
-                            "<strong>" + e.latlng.lng + ',' + e.latlng.lat
-                                    + "</strong>").openOn(map);
+                    popup.setLatLng(e.latlng).setContent("<strong>" + e.latlng.lng + ',' + e.latlng.lat + "</strong>")
+                            .openOn(map);
                 });
 
             }

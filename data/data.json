@@ -1,0 +1,803 @@
+{
+  "1": {
+    "id": 1,
+    "nom": "Guadeloupe",
+    "population": 399178,
+    "index": 26,
+    "bibliotheques": {
+      "offreAbs": 15,
+      "offreRel": 0.00000831761304467889,
+      "freqRel": 0.35,
+      "depensesRel": 0.94
+    },
+    "musees": {
+      "offreAbs": 6,
+      "offreRel": 0.00000332704521787156,
+      "freqAbs": 14589,
+      "freqRel": 0.00808971044725469,
+      "depensesAbs": 1912,
+      "depensesRel": 2.06
+    },
+     "artetessai": {
+      "offreAbs": 0,
+      "freqRel": 0,
+      "depensesAbs": 0,
+      "depensesRel": 0
+    }
+  },
+  "2": {
+    "id": 2,
+    "nom": "Martinique",
+    "population": 395982,
+    "index": 23,
+    "bibliotheques": {
+      "offreAbs": 15,
+      "offreRel": 0.00000831761304467889,
+      "freqRel": 0.9,
+      "depensesRel": 1.02
+    },
+    "musees": {
+      "offreAbs": 6,
+      "offreRel": 0.00000332704521787156,
+      "freqAbs": 47428,
+      "freqRel": 0.026299183432202,
+      "depensesAbs": 3200,
+      "depensesRel": 3.29
+    },
+     "artetessai": {
+      "offreAbs": 0,
+      "freqRel": 0,
+      "depensesAbs": 0,
+      "depensesRel": 0
+    }
+  },
+  "3": {
+    "id": 3,
+    "nom": "Guyane",
+    "population": 199206,
+    "index": 25,
+    "bibliotheques": {
+      "offreAbs": 2,
+      "offreRel": 0.00000110901507262385,
+      "freqRel": 0.65,
+      "depensesRel": 0.46
+    },
+    "musees": {
+      "offreAbs": 3,
+      "offreRel": 0.00000166352260893578,
+      "freqAbs": 19642,
+      "freqRel": 0.0108916370282389,
+      "depensesAbs": 2194,
+      "depensesRel": 1.93
+    },
+     "artetessai": {
+      "offreAbs": 0,
+      "freqRel": 0,
+      "depensesAbs": 0,
+      "depensesRel": 0
+    }
+  },
+  "4": {
+    "id": 4,
+    "nom": "La Réunion",
+    "population": 772907,
+    "index": 21,
+    "bibliotheques": {
+      "offreAbs": 18,
+      "offreRel": 0.00000998113565361467,
+      "freqRel": 2.2,
+      "depensesRel": 2.47
+    }
+  },
+  "6": {
+    "id": 6,
+    "nom": "Mayotte",
+    "population": null,
+    "index": 24,
+    "bibliotheques": {
+      "offreAbs": 2,
+      "offreRel": 0.00000110901507262385,
+      "freqRel": 0.87,
+      "depensesRel": 1
+    },
+     "artetessai": {
+      "offreAbs": 0,
+      "freqRel": 0,
+      "depensesAbs": 0,
+      "depensesRel": 0
+    }
+  },
+  "11": {
+    "id": 11,
+    "nom": "Île-de-France",
+    "population": 11442143,
+    "index": 16,
+    "bibliotheques": {
+      "offreAbs": 285,
+      "offreRel": 0.000158034647848899,
+      "freqRel": 3.62,
+      "depensesRel": 3.1
+    },
+    "musees": {
+      "offreAbs": 143,
+      "offreRel": 0.0000792945776926054,
+      "freqAbs": 33419105,
+      "freqRel": 18.5311455792996,
+      "depensesAbs": 228521,
+      "depensesRel": 6.94
+    },
+    "cinemas": {
+      "offreAbs": "1004",
+      "freqRel": 35.07,
+      "depensesAbs": 228521,
+      "depensesRel": 6.94,
+      "offreRel":0.000087746
+    },
+    "artetessai": {
+      "offreAbs": 317,
+      "freqRel": 14.9,
+      "depensesAbs": 228521,
+      "depensesRel": 6.94
+    }
+  },
+  "21": {
+    "id": 21,
+    "nom": "Champagne-Ardenne",
+    "population": 1339400,
+    "index": 13,
+    "bibliotheques": {
+      "offreAbs": 53,
+      "offreRel": 0.0000293888994245321,
+      "freqRel": 3.89,
+      "depensesRel": 3.28
+    },
+    "musees": {
+      "offreAbs": 35,
+      "offreRel": 0.0000194077637709174,
+      "freqAbs": 370041,
+      "freqRel": 0.205190523244401,
+      "depensesAbs": 27875,
+      "depensesRel": 4.14
+    },
+    "cinemas": {
+      "offreAbs": "99",
+      "freqRel": 8.09,
+      "depensesAbs": 27875,
+      "depensesRel": 4.14,
+      "offreRel":0.000073914
+    },
+    "artetessai": {
+      "offreAbs": 44,
+      "freqRel": 12.1,
+      "depensesAbs": 27875,
+      "depensesRel": 4.14
+    }
+  },
+  "22": {
+    "id": 22,
+    "nom": "Picardie",
+    "population": 1889028,
+    "index": 17,
+    "bibliotheques": {
+      "offreAbs": 80,
+      "offreRel": 0.0000443606029049541,
+      "freqRel": 3.5,
+      "depensesRel": 2.58
+    },
+    "musees": {
+      "offreAbs": 38,
+      "offreRel": 0.0000210712863798532,
+      "freqAbs": 490532,
+      "freqRel": 0.272003690802162,
+      "depensesAbs": 25540,
+      "depensesRel": 2.42
+    },
+    "cinemas": {
+      "offreAbs": "132",
+      "freqRel": 6.03,
+      "depensesAbs": 25540,
+      "depensesRel": 2.42
+    },
+    "artetessai": {
+      "offreAbs": 59,
+      "freqRel": 11.6,
+      "depensesAbs": 25540,
+      "depensesRel": 2.42
+    }
+  },
+  "23": {
+    "id": 23,
+    "nom": "Haute-Normandie",
+    "population": 1806677,
+    "index": 10,
+    "bibliotheques": {
+      "offreAbs": 64,
+      "offreRel": 0.0000354884823239633,
+      "freqRel": 4.23,
+      "depensesRel": 3.53
+    },
+    "musees": {
+      "offreAbs": 41,
+      "offreRel": 0.000022734808988789,
+      "freqAbs": 862269,
+      "freqRel": 0.478134658828148,
+      "depensesAbs": 42623,
+      "depensesRel": 5.14
+    },
+    "cinemas": {
+      "offreAbs": "161",
+      "freqRel": 5.08,
+      "depensesAbs": 42623,
+      "depensesRel": 5.14
+    },
+    "artetessai": {
+      "offreAbs": 58,
+      "freqRel": 10.6,
+      "depensesAbs": 42623,
+      "depensesRel": 5.14
+    }
+  },
+  "24": {
+    "id": 24,
+    "nom": "Centre",
+    "population": 2507246,
+    "index": 7,
+    "bibliotheques": {
+      "offreAbs": 118,
+      "offreRel": 0.0000654318892848073,
+      "freqRel": 4.38,
+      "depensesRel": 2.75
+    },
+    "musees": {
+      "offreAbs": 65,
+      "offreRel": 0.0000360429898602752,
+      "freqAbs": 1072319,
+      "freqRel": 0.594608966830468,
+      "depensesAbs": 42640,
+      "depensesRel": 4.45
+    },
+    "cinemas": {
+      "offreAbs": "191",
+      "freqRel": 14.05,
+      "depensesAbs": 42640,
+      "depensesRel": 4.45
+    },
+    "artetessai": {
+      "offreAbs": 101,
+      "freqRel": 14.8,
+      "depensesAbs": 42640,
+      "depensesRel": 4.45
+    }
+  },
+  "25": {
+    "id": 25,
+    "nom": "Basse-Normandie",
+    "population": 1452425,
+    "index": 6,
+    "bibliotheques": {
+      "offreAbs": 75,
+      "offreRel": 0.0000415880652233945,
+      "freqRel": 4.57,
+      "depensesRel": 3.11
+    },
+    "musees": {
+      "offreAbs": 50,
+      "offreRel": 0.0000277253768155963,
+      "freqAbs": 1375659,
+      "freqRel": 0.762813282895328,
+      "depensesAbs": 29899,
+      "depensesRel": 4.42
+    },
+    "cinemas": {
+      "offreAbs": "140",
+      "freqRel": 6.69,
+      "depensesAbs": 29899,
+      "depensesRel": 4.42
+    },
+    "artetessai": {
+      "offreAbs": 77,
+      "freqRel": 13,
+      "depensesAbs": 29899,
+      "depensesRel": 4.42
+    }
+  },
+  "26": {
+    "id": 26,
+    "nom": "Bourgogne",
+    "population": 1626190,
+    "index": 5,
+    "bibliotheques": {
+      "offreAbs": 126,
+      "offreRel": 0.0000698679495753027,
+      "freqRel": 4.75,
+      "depensesRel": 3.38
+    },
+    "musees": {
+      "offreAbs": 69,
+      "offreRel": 0.0000382610200055229,
+      "freqAbs": 981732,
+      "freqRel": 0.54437779263858,
+      "depensesAbs": 31905,
+      "depensesRel": 4.85
+    },
+    "cinemas": {
+      "offreAbs": "146",
+      "freqRel": 7.79,
+      "depensesAbs": 31905,
+      "depensesRel": 4.85
+    },
+    "artetessai": {
+      "offreAbs": 75,
+      "freqRel": 11.9,
+      "depensesAbs": 31905,
+      "depensesRel": 4.85
+    }
+  },
+  "31": {
+    "id": 31,
+    "nom": "Nord-Pas-de-Calais",
+    "population": 4015613,
+    "index": 15,
+    "bibliotheques": {
+      "offreAbs": 126,
+      "offreRel": 0.0000698679495753027,
+      "freqRel": 3.77,
+      "depensesRel": 2.83
+    },
+    "musees": {
+      "offreAbs": 47,
+      "offreRel": 0.0000260618542066605,
+      "freqAbs": 1336070,
+      "freqRel": 0.740860884040275,
+      "depensesAbs": 78506,
+      "depensesRel": 4.15
+    },
+    "cinemas": {
+      "offreAbs": "263",
+      "freqRel": 4.94,
+      "depensesAbs": 78506,
+      "depensesRel": 4.15
+    },
+    "artetessai": {
+      "offreAbs": 80,
+      "freqRel": 14.6,
+      "depensesAbs": 78506,
+      "depensesRel": 4.15
+    }
+  },
+  "41": {
+    "id": 41,
+    "nom": "Lorraine",
+    "population": 2332468,
+    "index": 14,
+    "bibliotheques": {
+      "offreAbs": 103,
+      "offreRel": 0.0000571142762401284,
+      "freqRel": 3.87,
+      "depensesRel": 3.52
+    },
+    "musees": {
+      "offreAbs": 40,
+      "offreRel": 0.000022180301452477,
+      "freqAbs": 618637,
+      "freqRel": 0.343038878741401,
+      "depensesAbs": 46449,
+      "depensesRel": 4.72
+    },
+    "cinemas": {
+      "offreAbs": "184",
+      "freqRel": 9.78,
+      "depensesAbs": 46449,
+      "depensesRel": 4.72
+    },
+    "artetessai": {
+      "offreAbs": 69,
+      "freqRel": 13.6,
+      "depensesAbs": 46449,
+      "depensesRel": 4.72
+    }
+  },
+  "42": {
+    "id": 42,
+    "nom": "Alsace",
+    "population": 1803402,
+    "index": 18,
+    "bibliotheques": {
+      "offreAbs": 75,
+      "offreRel": 0.0000415880652233945,
+      "freqRel": 3.49,
+      "depensesRel": 2.86
+    },
+    "musees": {
+      "offreAbs": 48,
+      "offreRel": 0.0000266163617429724,
+      "freqAbs": 1354811,
+      "freqRel": 0.751252909778297,
+      "depensesAbs": 64935,
+      "depensesRel": 8.2
+    },
+    "cinemas": {
+      "offreAbs": "133",
+      "freqRel": 6.17,
+      "depensesAbs": 64935,
+      "depensesRel": 8.2
+    },
+    "artetessai": {
+      "offreAbs": 46,
+      "freqRel": 11,
+      "depensesAbs": 64935,
+      "depensesRel": 8.2
+    }
+  },
+  "43": {
+    "id": 43,
+    "nom": "Franche-Comté",
+    "population": 1145744,
+    "index": 3,
+    "bibliotheques": {
+      "offreAbs": 75,
+      "offreRel": 0.0000415880652233945,
+      "freqRel": 5.01,
+      "depensesRel": 2.68
+    },
+    "musees": {
+      "offreAbs": 33,
+      "offreRel": 0.0000182987486982936,
+      "freqAbs": 644297,
+      "freqRel": 0.357267542123165,
+      "depensesAbs": 26298,
+      "depensesRel": 5.66
+    },
+    "cinemas": {
+      "offreAbs": "114",
+      "freqRel": 10.06,
+      "depensesAbs": 26298,
+      "depensesRel": 5.66
+    },
+    "artetessai": {
+      "offreAbs": 65,
+      "freqRel": 10.8,
+      "depensesAbs": 26298,
+      "depensesRel": 5.66
+    }
+  },
+  "52": {
+    "id": 52,
+    "nom": "Pays de la Loire",
+    "population": 3415391,
+    "index": 1,
+    "bibliotheques": {
+      "offreAbs": 149,
+      "offreRel": 0.000082621622910477,
+      "freqRel": 5.33,
+      "depensesRel": 3.21
+    },
+    "cinemas": {
+      "offreAbs": "289",
+      "freqRel": 11.59,
+      "depensesAbs": 54513,
+      "depensesRel": 4.37
+    },
+    "artetessai": {
+      "offreAbs": 173,
+      "freqRel": 16.1,
+      "depensesAbs": 54513,
+      "depensesRel": 4.37
+    },
+    "musees": {
+      "offreAbs": 38,
+      "offreRel": 0.0000210712863798532,
+      "freqAbs": 866732,
+      "freqRel": 0.480609425962708,
+      "depensesAbs": 54513,
+      "depensesRel": 4.37
+    }
+  },
+  "53": {
+    "id": 53,
+    "nom": "Bretagne",
+    "population": 3066585,
+    "index": 2,
+    "bibliotheques": {
+      "offreAbs": 221,
+      "offreRel": 0.000122546165524936,
+      "freqRel": 5.32,
+      "depensesRel": 3.37
+    },
+    "musees": {
+      "offreAbs": 38,
+      "offreRel": 0.0000210712863798532,
+      "freqAbs": 866732,
+      "freqRel": 0.480609425962708,
+      "depensesAbs": 54513,
+      "depensesRel": 4.37
+    },
+    "cinemas": {
+      "offreAbs": "289",
+      "freqRel": 11.59,
+      "depensesAbs": 54513,
+      "depensesRel": 4.37
+    },
+    "artetessai": {
+      "offreAbs": 173,
+      "freqRel": 16.1,
+      "depensesAbs": 54513,
+      "depensesRel": 4.37
+    }
+  },
+  "54": {
+    "id": 54,
+    "nom": "Poitou-Charentes",
+    "population": 1711307,
+    "index": 12,
+    "bibliotheques": {
+      "offreAbs": 123,
+      "offreRel": 0.0000682044269663669,
+      "freqRel": 4.02,
+      "depensesRel": 2.77
+    },
+    "musees": {
+      "offreAbs": 45,
+      "offreRel": 0.0000249528391340367,
+      "freqAbs": 525682,
+      "freqRel": 0.291494630703526,
+      "depensesAbs": 40115,
+      "depensesRel": 6.53
+    },
+    "cinemas": {
+      "offreAbs": "164",
+      "freqRel": 9.78,
+      "depensesAbs": 40115,
+      "depensesRel": 6.53
+    },
+    "artetessai": {
+      "offreAbs": 69,
+      "freqRel": 12.5,
+      "depensesAbs": 40115,
+      "depensesRel": 6.53
+    }
+  },
+  "72": {
+    "id": 72,
+    "nom": "Aquitaine",
+    "population": 3088196,
+    "index": 11,
+    "bibliotheques": {
+      "offreAbs": 149,
+      "offreRel": 0.000082621622910477,
+      "freqRel": 4.13,
+      "depensesRel": 3.42
+    },
+    "musees": {
+      "offreAbs": 57,
+      "offreRel": 0.0000316069295697798,
+      "freqAbs": 1175677,
+      "freqRel": 0.651921756768596,
+      "depensesAbs": 59647,
+      "depensesRel": 3.67
+    },
+    "cinemas": {
+      "offreAbs": "311",
+      "freqRel": 13.29,
+      "depensesAbs": 59647,
+      "depensesRel": 3.67
+    },
+    "artetessai": {
+      "offreAbs": 171,
+      "freqRel": 14,
+      "depensesAbs": 59647,
+      "depensesRel": 3.67
+    }
+  },
+  "73": {
+    "id": 73,
+    "nom": "Midi-Pyrénées",
+    "population": 2743073,
+    "index": 8,
+    "bibliotheques": {
+      "offreAbs": 127,
+      "offreRel": 0.0000704224571116146,
+      "freqRel": 4.35,
+      "depensesRel": 3.5
+    },
+    "musees": {
+      "offreAbs": 74,
+      "offreRel": 0.0000410335576870825,
+      "freqAbs": 1464931,
+      "freqRel": 0.812315279676966,
+      "depensesAbs": 72461,
+      "depensesRel": 5.25
+    },
+    "cinemas": {
+      "offreAbs": "255",
+      "freqRel": 18.08,
+      "depensesAbs": 72461,
+      "depensesRel": 5.25
+    },
+    "artetessai": {
+      "offreAbs": 140,
+      "freqRel": 15.3,
+      "depensesAbs": 72461,
+      "depensesRel": 5.25
+    }
+  },
+  "74": {
+    "id": 74,
+    "nom": "Limousin",
+    "population": 727487,
+    "index": 9,
+    "bibliotheques": {
+      "offreAbs": 43,
+      "offreRel": 0.0000238438240614128,
+      "freqRel": 4.32,
+      "depensesRel": 3.26
+    },
+    "musees": {
+      "offreAbs": 11,
+      "offreRel": 0.00000609958289943119,
+      "freqAbs": 150559,
+      "freqRel": 0.0834861001595873,
+      "depensesAbs": 17831,
+      "depensesRel": 7.24
+    },
+    "cinemas": {
+      "offreAbs": "76",
+      "freqRel": 6.25,
+      "depensesAbs": 17831,
+      "depensesRel": 7.24
+    },
+    "artetessai": {
+      "offreAbs": 40,
+      "freqRel": 10.5,
+      "depensesAbs": 17831,
+      "depensesRel": 7.24
+    }
+  },
+  "82": {
+    "id": 82,
+    "nom": "Rhône-Alpes",
+    "population": 5963736,
+    "index": 0,
+    "bibliotheques": {
+      "offreAbs": 356,
+      "offreRel": 0.000197404682927046,
+      "freqRel": 5.33,
+      "depensesRel": 3.27
+    },
+    "musees": {
+      "offreAbs": 107,
+      "offreRel": 0.0000593323063853761,
+      "freqAbs": 2542389,
+      "freqRel": 1.40977386073654,
+      "depensesAbs": 151002,
+      "depensesRel": 6.18
+    },
+    "cinemas": {
+      "offreAbs": "672",
+      "freqRel": 25.06,
+      "depensesAbs": 151002,
+      "depensesRel": 6.18
+    },
+    "artetessai": {
+      "offreAbs": 244,
+      "freqRel": 14.7,
+      "depensesAbs": 151002,
+      "depensesRel": 6.18
+    }
+  },
+  "83": {
+    "id": 83,
+    "nom": "Auvergne",
+    "population": 1331779,
+    "index": 4,
+    "bibliotheques": {
+      "offreAbs": 66,
+      "offreRel": 0.0000365974973965871,
+      "freqRel": 4.81,
+      "depensesRel": 3.18
+    },
+    "musees": {
+      "offreAbs": 32,
+      "offreRel": 0.0000177442411619816,
+      "freqAbs": 400744,
+      "freqRel": 0.222215568131786,
+      "depensesAbs": 20516,
+      "depensesRel": 4.15
+    },
+    "cinemas": {
+      "offreAbs": "112",
+      "freqRel": 7.1,
+      "depensesAbs": 20516,
+      "depensesRel": 4.15
+    },
+    "artetessai": {
+      "offreAbs": 66,
+      "freqRel": 13.4,
+      "depensesAbs": 20516,
+      "depensesRel": 4.15
+    }
+  },
+  "91": {
+    "id": 91,
+    "nom": "Languedoc-Roussillon",
+    "population": 2497718,
+    "index": 19,
+    "bibliotheques": {
+      "offreAbs": 109,
+      "offreRel": 0.0000604413214579999,
+      "freqRel": 3.16,
+      "depensesRel": 2.58
+    },
+    "musees": {
+      "offreAbs": 60,
+      "offreRel": 0.0000332704521787156,
+      "freqAbs": 1416497,
+      "freqRel": 0.785458261663234,
+      "depensesAbs": 62301,
+      "depensesRel": 5.65
+    },
+    "cinemas": {
+      "offreAbs": "246",
+      "freqRel": 13.67,
+      "depensesAbs": 62301,
+      "depensesRel": 5.65
+    },
+    "artetessai": {
+      "offreAbs": 87,
+      "freqRel": 15.2,
+      "depensesAbs": 62301,
+      "depensesRel": 5.65
+    }
+  },
+  "93": {
+    "id": 93,
+    "nom": "Provence-Alpes-Côte d'Azur",
+    "population": 4768564,
+    "index": 20,
+    "bibliotheques": {
+      "offreAbs": 214,
+      "offreRel": 0.000118664612770752,
+      "freqRel": 2.86,
+      "depensesRel": 2.1
+    },
+     "musees": {
+      "offreAbs": 113,
+      "offreRel": 0.0000592945776926054,
+      "freqAbs": 33419105,
+      "freqRel": 14.5311455792996,
+      "depensesAbs": 178521,
+      "depensesRel": 4.94
+    },
+    "cinemas": {
+      "offreAbs": "504",
+      "freqRel": 28.07,
+      "depensesAbs": 228521,
+      "depensesRel": 6.94
+    },
+    "artetessai": {
+      "offreAbs": 87,
+      "freqRel": 15.2,
+      "depensesAbs": 62301,
+      "depensesRel": 5.65
+    }
+  },
+  "94": {
+    "id": 94,
+    "nom": "Corse",
+    "population": 289092,
+    "index": 22,
+    "bibliotheques": {
+      "offreAbs": 5,
+      "offreRel": 0.00000277253768155963,
+      "freqRel": 1.73,
+      "depensesRel": 1.59
+    },
+     "artetessai": {
+      "offreAbs": 0,
+      "offreRel": 0,
+      "freqRel": 0,
+      "depensesAbs": 0,
+      "depensesRel": 0
+    }
+  }
+}
