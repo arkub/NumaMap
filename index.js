@@ -1,7 +1,7 @@
 (function(mapConfig) {
 
     var CONFIG = {
-        debug : true,
+        debug : false,
         maxZoom : 20,
         container : '#map-container',
         dataUrls : [ './data/numa.html', './data/program.html', './data/history.html', './data/info.html',
