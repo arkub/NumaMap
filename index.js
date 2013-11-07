@@ -226,11 +226,11 @@
         }
 
         function focusDescription(featureId) {
-            //var featureId = this.getId();
+            // var featureId = this.getId();
             var element = $('#stats-region-' + featureId);
-            //var element = $('#' + featureId);
-//            if (!element[0])
-//                return;
+            // var element = $('#' + featureId);
+            // if (!element[0])
+            // return;
             var cls = 'feature-active';
             var container = $('.scrollable');
             container.find('.' + cls).each(function() {
@@ -242,7 +242,7 @@
             }, 300);
             element.addClass(cls);
         }
-        
+
         function drawRegions() {
             if (regionLayerGroup) {
                 map.getMap().removeLayer(regionLayerGroup);
@@ -292,7 +292,7 @@
             _.each(typeCriterion, function(criterion, index) {
                 if (regionData[criterion] != undefined && regionData[criterion][sortField]) {
                     score += regionData[criterion][sortField];
-                } else if (regionData[criterion] != undefined && sortField=='offreRel' && regionData[criterion]['offreAbs']) {
+                } else if (regionData[criterion] != undefined && sortField == 'offreRel' && regionData[criterion]['offreAbs']) {
                     score += regionData[criterion]['offreAbs'] / regionData['population'];
                 }
             });
@@ -356,51 +356,62 @@
             var typeCriterion = getTypeCriterion();
             var natureCriterion = sortField;
             var sortedRegions = sortRegions(typeCriterion, natureCriterion);
-            _.each(sortedRegions, function(data, index) {
-                var regionData = data[0];
-                var tableStat = '<table class="table">'
-                        + '<thead><tr><th></th>'
-                        +'<th><i class="fa fa-building-o header" title="Nombre d\'établissements par million d\'habitants" data-placement="top"></i></th>'
-                        +'<th><i class="fa fa-group header" title="Indice de fréquentation" data-placement="top"></i></th>'
-                        +'<th><i class="fa fa-euro header" title="Indice de subvention" data-placement="top"></i></th>' + '</tr></thead><tbody>';
+            _
+                    .each(
+                            sortedRegions,
+                            function(data, index) {
+                                var regionData = data[0];
+                                var tableStat = '<table class="table">'
+                                        + '<thead><tr><th></th>'
+                                        + '<th><i class="fa fa-building-o header number" title="Nombre d\'établissements par million d\'habitants" data-placement="top"></i></th>'
+                                        + '<th><i class="fa fa-group header freq" title="Indice de fréquentation" data-placement="top"></i></th>'
+                                        + '<th><i class="fa fa-euro header sub" title="Indice de subvention" data-placement="top"></i></th>'
+                                        + '</tr></thead><tbody>';
 
-                _.each(typeCriterion, function(criterion, index) {
-                    var data = regionData[criterion];
-                    if (data) {
-                        var icon = '';
-                        if (criterion == 'musees')
-                            icon = '<i class="fa fa-home" title="Musées" data-placement="top"></i>';
-                        else if (criterion == 'cinemas')
-                            icon = '<i class="fa fa-film" title="Cinémas" data-placement="top"></i>';
-                        else if (criterion == 'bibliotheques')
-                            icon = '<i class="fa fa-book" title="Bibliothèques" data-placement="top"></i>';
-                        else if (criterion == 'artetessai')
-                            icon = '<i class="fa fa-video-camera" title="Cinémas d\'art et essai" data-placement="top"></i>';
-                        tableStat += '<tr><td>'+icon+'</td>';
-                        if (data['offreRel']) {
-                            tableStat += '<td>' + Math.round(data['offreRel'] * 1000000) + '</td>';
-                        } else {
-                            var pop = regionData['population'];
-                            var offreAbs = data['offreAbs'];
-                            if (offreAbs != undefined)
-                                tableStat += '<td>'+Math.round(offreAbs/pop * 1000000) +'</td>';
-                            else
-                                tableStat += '<td></td>';
-                        }
-                        tableStat += '<td>' + Math.round(data['freqRel'] * 10) + '</td>';
-                        tableStat += '<td>' + Math.round(data['depensesRel']) + '</td></tr>';
-                    }
-                });
+                                _
+                                        .each(
+                                                typeCriterion,
+                                                function(criterion, index) {
+                                                    var data = regionData[criterion];
+                                                    if (data) {
+                                                        var icon = '';
+                                                        if (criterion == 'musees')
+                                                            icon = '<i class="fa fa-home" title="Musées" data-placement="top"></i>';
+                                                        else if (criterion == 'cinemas')
+                                                            icon = '<i class="fa fa-film" title="Cinémas" data-placement="top"></i>';
+                                                        else if (criterion == 'bibliotheques')
+                                                            icon = '<i class="fa fa-book" title="Bibliothèques" data-placement="top"></i>';
+                                                        else if (criterion == 'artetessai')
+                                                            icon = '<i class="fa fa-video-camera" title="Cinémas d\'art et essai" data-placement="top"></i>';
+                                                        tableStat += '<tr><td>' + icon + '</td>';
+                                                        if (data['offreRel']) {
+                                                            tableStat += '<td><span class="badge badge-number">'
+                                                                    + Math.round(data['offreRel'] * 1000000) + '</span></td>';
+                                                        } else {
+                                                            var pop = regionData['population'];
+                                                            var offreAbs = data['offreAbs'];
+                                                            if (offreAbs != undefined)
+                                                                tableStat += '<td><span class="badge badge-number">'
+                                                                        + Math.round(offreAbs / pop * 1000000) + '</span></td>';
+                                                            else
+                                                                tableStat += '<td></td>';
+                                                        }
+                                                        tableStat += '<td><span class="badge badge-freq">'
+                                                                + Math.round(data['freqRel'] * 10) + '</span></td>';
+                                                        tableStat += '<td><span class="badge badge-sub">'
+                                                                + Math.round(data['depensesRel']) + '</span></td></tr>';
+                                                    }
+                                                });
 
-                tableStat += '</tbody></table>';
+                                tableStat += '</tbody></table>';
 
-                var div = $('<div class="stats-table" id="stats-region-' + regionData.id + '"></div>');
-                div.append('<h3>'+(index+1)+'. ' + regionData.nom + '</h3>');
-                div.append(tableStat);
-                
-                $('.stats').append(div);
+                                var div = $('<div class="stats-table" id="stats-region-' + regionData.id + '"></div>');
+                                div.append('<h3>' + (index + 1) + '. ' + regionData.nom + '</h3>');
+                                div.append(tableStat);
 
-            });
+                                $('.stats').append(div);
+
+                            });
 
         }
 
@@ -425,40 +436,77 @@
             $(this).button('toggle');
             updateView();
         });
-        
+
         $('.sort').on('click', function(event) {
             var criteria = [];
             // https://github.com/twbs/bootstrap/issues/2380#issuecomment-27489772
-            //event.stopImmediatePropagation();
-            //$(this).button('toggle');
+            // event.stopImmediatePropagation();
+            // $(this).button('toggle');
             sortField = $(event.currentTarget).data('sort');
             updateView();
-            
-        });
 
+        });
 
         $.ajax({
             dataType : 'json',
             url : './data/geoflar-departements.json',
             success : function(data) {
+
+                var geojson = {
+                    "type" : "FeatureCollection",
+                    "features" : []
+
+                };
+
                 _.each(data, function(item, index) {
                     var region = item.fields.code_reg;
                     if (!regions[region]) {
                         regions[region] = [];
                     }
                     regions[region].push(item.fields);
-
                 });
+
+                // _.each(regions, function(regionData, regionKey) {
+                // _.each(regionData, function(department) {
+                // geojson.features.push({'type':'Feature', 'geometry':
+                // department.geom});
+                // });
+                //                     
+                // });
+                // $('.output').val(JSON.stringify(geojson, null, 2));
 
                 $.ajax({
                     dataType : 'json',
                     url : './data/data.json',
                     success : function(data) {
                         stats = data;
+
                         updateView();
                         updateSize();
                         $('.types').tooltip();
                         $('.header').tooltip();
+
+                        $.ajax({
+                            dataType : 'json',
+                            url : './data/aquitaine.json',
+                            success : function(data) {
+                                var myStyle = {
+                                        'color' : 'red',
+                                        'weight' : 2,
+                                        'fillColor' : 'red',
+                                        'opacity' : 1,
+                                        'fillOpacity' : 1
+                                    };
+
+                                    var geoJsonLayer = L.geoJson(data, {
+                                        'style' : myStyle,
+                                    });
+                                    
+                                    //geoJsonLayer.addTo(map.getMap());
+                                
+                            }
+                        });
+
                     }
 
                 });

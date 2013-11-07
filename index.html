@@ -134,6 +134,34 @@ margin-right:10px;
 h3 {
 font-size: 20px;
 }
+
+.number {
+color: #300072;
+}
+.freq {
+color: #ef9800;
+}
+.sub {
+color: #ab0040;
+}
+
+
+.badge-number {
+background-color: #300072;
+opacity:0.7;
+}
+.badge-freq {
+background-color: #ef9800;
+opacity:0.7;
+}
+.badge-sub {
+background-color: #ab0040;
+opacity:0.7;
+}
+
+.table th, .table td {
+text-align:center;
+}
 </style>
 </head>
 <body>
@@ -143,8 +171,9 @@ font-size: 20px;
 
 		<div class="row-fluid banner" style="background-color: #bc1f00;">
 			<div class="span12">
-			    <a href="#infoDialog" data-toggle="modal" style="float:right; margin-right:2em; margin-top:1em;color:white; font-size:2em;"><i class="fa fa-info-circle fa-3"></i></a>
-			    <!-- <a href="http://twitter.com/ubimix" style="float:right; margin-right:1em; margin-top:1em;color:white; font-size:2em;"><i class="fa fa-twitter fa-3"></i></a> -->
+			             <a href="http://prezi.com/heux06idlbdi/culturometrefr/" target="blank" style="float:right; margin-right:2em; margin-top:1em;color:white; font-size:2em;"><i class="fa fa-question-circle fa-3"></i></a>
+			    <a href="#infoDialog" data-toggle="modal" style="float:right; margin-right:1em; margin-top:1em;color:white; font-size:2em;"><i class="fa fa-info-circle fa-3"></i></a>
+
 				<a href="http://www.culturometre.fr"><img src="./culturometre.png" /></a>
 			</div>
 		</div>
@@ -162,6 +191,9 @@ font-size: 20px;
 			</div>
 			<div class="span3 map-block info scrollable">
                 <div style="margin-top:1em;">
+                
+               <ul class="breadcrumb" style="margin-right:10px; font-size:90%;"><li>Sélectionner un ou plusieurs type(s) d'établissements culturels puis trier selon un indicateur.</li></ul>
+                
 				<div class="btn-group types" data-toggle="buttons-checkbox">
 					<button type="button" class="btn btn-primary active"
 						data-type="musees" title="Musées" data-placement="top">
@@ -213,24 +245,24 @@ font-size: 20px;
   </div>
   <div class="modal-body">
     <p>Le Culturomètre est un baromètre géolocalisé et participatif de l'accès à la culture dans les régions de France.</p>
-    <p>
-    L'objectif de ce projet est de fournir un outil d'analyse à destination des citoyens ainsi que des élus en charge des politiques culturelles. Des développements plus poussés permettraient de transformer ce prototype en un tableau de bord d'aide à la décision.  
-    </p>
     
-    <p>Le Culturomètre a été développé par <a href="http://www.linkedin.com/in/dadys">Yannis Adelbost</a>, <a href="http://www.linkedin.com/in/mkotelnikov">Mikhail Kotelnikov</a> et <a href="http://www.linkedin.com/in/slauriere">Stéphane Laurière</a> lors du <a href="http://cblog.culture.fr/2013/10/22/developpeurs-graphistes-porteurs-de-projets-talents-numeriques-du-25-au-27-octobre-participez-au-hackathon-dataculture">Hackaton Dataculture</a> qui s'est déroulé du 25 au 27 octobre à <a href="http://www.simplon.co">Simplon.co</a> sous l'égide du Ministère de la Culture et de la Communication et avec l'aide des mentors de l'événément.</p>
+    <p>Il a été développé lors du <a href="http://cblog.culture.fr/2013/10/22/developpeurs-graphistes-porteurs-de-projets-talents-numeriques-du-25-au-27-octobre-participez-au-hackathon-dataculture">Hackaton Dataculture</a> du 25 au 27 octobre à <a href="http://www.simplon.co">Simplon.co</a> sous l'égide du Ministère de la Culture et de la Communication et avec l'aide des mentors de l'événément.</p>
     <p>
-    Les statistiques affichées dans ce prototype ont été calculées à partir de données open-data mises à disposition par le Ministère sur le site <a href="http://data.gouv.fr">data.gouv.fr</a> ainsi qu'à partir de rapports de la <a href="http://www.ccomptes.fr/">Cour des comptes</a> et de données géographiques de l'<a href="http://www.ign.fr">IGN</a> publiées en GeoJSON par <a href="http://public.opendatasoft.com/explore/dataset/geoflar-departements/">OpenDataSoft</a>. Ces statistiques sont ici fournies à titre de démonstration. Ce prototype n'a pas valeur journalistique à ce stade. 
+    Les statistiques affichéesont été calculées à partir de données open-data mises à disposition par le Ministère sur le site <a href="http://data.gouv.fr">data.gouv.fr</a> ainsi qu'à partir de rapports de la <a href="http://www.ccomptes.fr/">Cour des comptes</a> et de données géographiques de l'<a href="http://www.ign.fr">IGN</a> publiées en GeoJSON par <a href="http://public.opendatasoft.com/explore/dataset/geoflar-departements/">OpenDataSoft</a>. Ces statistiques sont ici fournies à titre de démonstration. Ce prototype n'a pas valeur journalistique à ce stade. 
     </p>
     
     <p>
     Le code du projet est disponible sur <a href="https://github.com/arkub/culturometre">GitHub</a> sous la licence MIT.
     </p>
+
+<p>L'équipe projet regroupe <a href="http://www.linkedin.com/in/dadys">Yannis Adelbost</a>, <a href="http://www.linkedin.com/in/mkotelnikov">Mikhail Kotelnikov</a> et <a href="http://www.linkedin.com/in/slauriere">Stéphane Laurière</a>. Une présentation du projet est disponible sur <a href="http://prezi.com/heux06idlbdi/culturometrefr/">Prezi</a>. </p>
     
   </div>
   <div class="modal-footer">
     <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Ok</button>
   </div>
 </div>
+
 
 	<!-- The main code of the application -->
 	<script type="text/javascript" src="./index.js"></script>
