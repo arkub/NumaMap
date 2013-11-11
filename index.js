@@ -249,38 +249,39 @@
             }
             regionLayerGroup = L.featureGroup();
 
-            _.each(regions, function(departments, region) {
+            _.each(regions, function(regionGeometry, regionCode) {
+               
                 var natureCriterion = sortField;
                 var color = getNatureColors()[natureCriterion];
-                var score = computeRegionScore(stats[region], getTypeCriterion(), sortField);
+                var score = computeRegionScore(stats[regionCode], getTypeCriterion(), sortField);
                 var regionScores = sortRegions(getTypeCriterion(), sortField);
                 var topScore = regionScores[0][1];
                 var normalizedScore = score / topScore;
 
-                _.each(regions[region], function(department, index) {
-                    var geojsonFeature = {
-                        'type' : 'Feature'
-                    };
-                    geojsonFeature.geometry = department.geom;
+                var geojsonFeature = {
+                    'type' : 'Feature'
+                };
+                geojsonFeature.geometry = regionGeometry;
 
-                    var myStyle = {
-                        'color' : 'white',
-                        'weight' : 2,
-                        'fillColor' : color,
-                        'opacity' : normalizedScore,
-                        'fillOpacity' : normalizedScore
-                    };
+                var myStyle = {
+                    'color' : 'white',
+                    'weight' : 2,
+                    'fillColor' : color,
+                    'opacity' : normalizedScore,
+                    'fillOpacity' : normalizedScore
+                };
 
-                    var geoJsonLayer = L.geoJson(geojsonFeature, {
-                        'style' : myStyle,
-                        'regionId' : region
-                    });
-                    regionLayerGroup.addLayer(geoJsonLayer);
+                var geoJsonLayer = L.geoJson(geojsonFeature, {
+                    'style' : myStyle,
+                    'regionId' : regionCode
+                });
+                
+                console.log('regionCode', geojsonFeature);
+                
+                regionLayerGroup.addLayer(geoJsonLayer);
 
-                    geoJsonLayer.on('click', function() {
-                        focusDescription(this.options.regionId);
-                    });
-
+                geoJsonLayer.on('click', function() {
+                    focusDescription(this.options.regionId);
                 });
 
             });
@@ -449,7 +450,7 @@
 
         $.ajax({
             dataType : 'json',
-            url : './data/geoflar-departements.json',
+            url : './data/regions.json',
             success : function(data) {
 
                 var geojson = {
@@ -458,22 +459,10 @@
 
                 };
 
-                _.each(data, function(item, index) {
-                    var region = item.fields.code_reg;
-                    if (!regions[region]) {
-                        regions[region] = [];
-                    }
-                    regions[region].push(item.fields);
+                _.each(data.features, function(item, index) {
+                    var regionId = item.properties.id;
+                    regions[regionId] = item.geometry;
                 });
-
-                // _.each(regions, function(regionData, regionKey) {
-                // _.each(regionData, function(department) {
-                // geojson.features.push({'type':'Feature', 'geometry':
-                // department.geom});
-                // });
-                //                     
-                // });
-                // $('.output').val(JSON.stringify(geojson, null, 2));
 
                 $.ajax({
                     dataType : 'json',
@@ -485,28 +474,6 @@
                         updateSize();
                         $('.types').tooltip();
                         $('.header').tooltip();
-
-                        $.ajax({
-                            dataType : 'json',
-                            url : './data/aquitaine.json',
-                            success : function(data) {
-                                var myStyle = {
-                                        'color' : 'red',
-                                        'weight' : 2,
-                                        'fillColor' : 'red',
-                                        'opacity' : 1,
-                                        'fillOpacity' : 1
-                                    };
-
-                                    var geoJsonLayer = L.geoJson(data, {
-                                        'style' : myStyle,
-                                    });
-                                    
-                                    //geoJsonLayer.addTo(map.getMap());
-                                
-                            }
-                        });
-
                     }
 
                 });
