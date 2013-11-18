@@ -162,6 +162,10 @@ opacity:0.7;
 .table th, .table td {
 text-align:center;
 }
+
+.table-info th, .table-info td {
+text-align: left;
+}
 </style>
 </head>
 <body>
@@ -204,8 +208,8 @@ text-align:center;
 						<i class="fa fa-film"></i>
 					</button>
 					<button type="button" class="btn btn-primary active"
-                        data-type="artetessai" title="Cinémas d'art et essai" data-placement="top">
-                        <i class="fa fa-video-camera"></i>
+                        data-type="musique" title="Musique" data-placement="top">
+                        <i class="fa fa-music"></i>
                     </button>
 					
 					<button type="button" class="btn btn-primary active"
@@ -246,11 +250,64 @@ text-align:center;
   <div class="modal-body">
     <p>Le Culturomètre est un baromètre géolocalisé et participatif de l'accès à la culture dans les régions de France. L'approche et les objectifs suivis sont présentés dans cette animation Prezi: <a href="http://prezi.com/heux06idlbdi/culturometrefr/">Culturomètre</a>.</p>
     
-    <p>Le Culturomètre a été développé lors du <a href="http://cblog.culture.fr/2013/10/22/developpeurs-graphistes-porteurs-de-projets-talents-numeriques-du-25-au-27-octobre-participez-au-hackathon-dataculture">Hackaton Dataculture</a> du 25 au 27 octobre à <a href="http://www.simplon.co">Simplon.co</a> sous l'égide du Ministère de la Culture et de la Communication et avec l'aide des mentors de l'événément. Le code du projet est disponible sur <a href="https://github.com/arkub/culturometre">GitHub</a> sous la licence MIT.</p>
     <p>
-    Les statistiques affichées ont été calculées à partir de données open-data mises à disposition par le Ministère sur le site <a href="http://data.gouv.fr">data.gouv.fr</a> ainsi qu'à partir de rapports de la <a href="http://www.ccomptes.fr/">Cour des comptes</a> et de données géographiques de l'<a href="http://www.ign.fr">IGN</a> publiées en GeoJSON par <a href="http://public.opendatasoft.com/explore/dataset/geoflar-departements/">OpenDataSoft</a>. Ces statistiques sont ici fournies à titre de démonstration et n'ont pas valeur journalistique à ce stade. En particulier, les années sur lesquelles portent les calculs sont hétérogènes.
+    Les statistiques affichées ont été calculées à partir des données suivantes :
+
+
+<table class="table table-info">
+<tr>
+<th>Bibliothèques</th>
+<td><a href="http://www2.culture.gouv.fr/culture/deps/chiffres-cles2011/08-bibliotheques-2011.pdf">MCC/DGMIC/DEPS chiffres clés 2011 statistiques de la culture</td>
+</tr>
+
+<tr>
+<th>Musées</th>
+<td>
+<ul>
+<li>Nombre d'établissements : <a href="http://www.data.gouv.fr/DataSet/30382165">liste des musées de France</a> sur le portail <a href="http://data.gouv.fr">data.gouv.fr</a></li>
+<li>Fréquentation : données de <a href="http://www.data.gouv.fr/content/search?SortBy=Pertinence&SortOrder=0&SearchText=frequentation+des+musees+de+france">fréquentation des musées de France par région</a> sur le portail <a href="http://data.gouv.fr">data.gouv.fr</a></li>
+<li>Dépenses publiques : seules les données au niveau national sont disponibles sur le portail <a href="http://data.gouv.fr">data.gouv.fr</a>. Les financements « Spectacle vivant et Art plastiques » de chaque DRAC en région ont été utilisés pour estimer les dépenses liées aux musées de France. Source : MCC DGCA Repère 2013 sur des données de 2010. URL : <a href="http://www.culturecommunication.gouv.fr/Disciplines-et-secteurs/Danse/Actualites/Cartographie-du-spectacle-vivant-et-des-arts-plastiques">Cartographie du spectacle vivant et des arts plastiques</a>
+</li>
+</ul>
+</td>
+</tr>
+
+<tr>
+<th>Cinémas</th>
+<td>
+<ul>
+<li>Nombre d'établissements : <a href="http://www.data.gouv.fr/DataSet/571969">nombre d'écrans actifs par région administrative</a> sur le portail <a href="http://data.gouv.fr">data.gouv.fr</a></li>
+<li>Fréquentation : Source: MCC, rapport <a href="http://www2.culture.gouv.fr/culture/deps/chiffres-cles2011/09-cinema-2011.pdf">« Chiffres clefs 2011 - Statistiques de la culture »</a></li>
+</ul>
+
+</td>
+</tr>
+
+
+<tr>
+<th>Musique</th>
+<td>
+<ul>
+<li>Nombre d'établissements : Source : <a href="http://www.culturecommunication.gouv.fr/Disciplines-et-secteurs/Danse/Actualites/Cartographie-du-spectacle-vivant-et-des-arts-plastiques">MCC Cartographie nationale du spectacle vivant et des arts plastiques en 2010</a></li>
+<li>Fréquentation : Ensemble des représentations déclarées par région du lieu de représentation en 2010
+période du 1er janvier au 31 décembre 2010 (déclarations reçues au 30 avril 2011). Source : CNV <a href="https://www.cnv.fr/statistiques-sur-diffusion-spectacles">Statistiques sur la diffusion des spectacles</a></li>
+<li>Dépenses publiques : Source : <a href="http://www.culturecommunication.gouv.fr/Disciplines-et-secteurs/Danse/Actualites/Cartographie-du-spectacle-vivant-et-des-arts-plastiques">MCC Cartographie nationale du spectacle vivant et des arts plastiques en 2010</a>. La Direction générale de la création artistique - Bureau de l'observation, de la performance et du contrôle de gestion - présente la cartographie nationale du spectacle vivant et des arts plastiques en 2010.
+</li>
+</ul>
+</td>
+</tr>
+
+<tr>
+<td></td><td></td>
+</tr>
+
+</table>
+
+
+    
     </p>
     
+    <p>Le Culturomètre a été développé lors du <a href="http://cblog.culture.fr/2013/10/22/developpeurs-graphistes-porteurs-de-projets-talents-numeriques-du-25-au-27-octobre-participez-au-hackathon-dataculture">Hackaton Dataculture</a> du 25 au 27 octobre à <a href="http://www.simplon.co">Simplon.co</a> sous l'égide du Ministère de la Culture et de la Communication et avec l'aide des mentors de l'événément. Le code du projet est disponible sur <a href="https://github.com/arkub/culturometre">GitHub</a> sous la licence MIT.</p>
 <p>L'équipe projet regroupe <a href="http://www.linkedin.com/in/dadys">Yannis Adelbost</a>, <a href="http://www.linkedin.com/in/mkotelnikov">Mikhail Kotelnikov</a> et <a href="http://www.linkedin.com/in/slauriere">Stéphane Laurière</a>. Le projet a été soumis au concours Dataconnexions de novembre 2013.</p>
     
   </div>

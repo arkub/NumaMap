@@ -276,8 +276,6 @@
                     'regionId' : regionCode
                 });
                 
-                console.log('regionCode', geojsonFeature);
-                
                 regionLayerGroup.addLayer(geoJsonLayer);
 
                 geoJsonLayer.on('click', function() {
@@ -290,11 +288,16 @@
 
         function computeRegionScore(regionData, typeCriterion, sortField) {
             var score = 0;
+            
             _.each(typeCriterion, function(criterion, index) {
                 if (regionData[criterion] != undefined && regionData[criterion][sortField]) {
                     score += regionData[criterion][sortField];
                 } else if (regionData[criterion] != undefined && sortField == 'offreRel' && regionData[criterion]['offreAbs']) {
                     score += regionData[criterion]['offreAbs'] / regionData['population'];
+                } else if (regionData[criterion] != undefined && sortField == 'freqRel' && regionData[criterion]['freqAbs']) {
+                    score += regionData[criterion]['freqAbs'] / regionData['population'];
+                } else if (regionData[criterion] != undefined && sortField == 'depensesRel' && regionData[criterion]['depensesAbs']) {
+                    score += regionData[criterion]['depensesAbs'] / regionData['population'];
                 }
             });
             return score;
@@ -382,8 +385,8 @@
                                                             icon = '<i class="fa fa-film" title="Cinémas" data-placement="top"></i>';
                                                         else if (criterion == 'bibliotheques')
                                                             icon = '<i class="fa fa-book" title="Bibliothèques" data-placement="top"></i>';
-                                                        else if (criterion == 'artetessai')
-                                                            icon = '<i class="fa fa-video-camera" title="Cinémas d\'art et essai" data-placement="top"></i>';
+                                                        else if (criterion == 'musique')
+                                                            icon = '<i class="fa fa-music" title="Musique" data-placement="top"></i>';
                                                         tableStat += '<tr><td>' + icon + '</td>';
                                                         if (data['offreRel']) {
                                                             tableStat += '<td><span class="badge badge-number">'
@@ -397,10 +400,25 @@
                                                             else
                                                                 tableStat += '<td></td>';
                                                         }
+                                                        if (data['freqRel']) {
                                                         tableStat += '<td><span class="badge badge-freq">'
                                                                 + Math.round(data['freqRel'] * 10) + '</span></td>';
+                                                        } else {
+                                                            var pop = regionData['population'];
+                                                            var freqAbs = data['freqAbs'];
+                                                            tableStat += '<td><span class="badge badge-number">'
+                                                                + Math.round(freqAbs / pop * 1000000) + '</span></td>';
+                                                        }
+                                                        
+                                                        if (data['depensesRel']) {
                                                         tableStat += '<td><span class="badge badge-sub">'
-                                                                + Math.round(data['depensesRel']) + '</span></td></tr>';
+                                                                + data['depensesRel'].toFixed(1) + '</span></td></tr>';
+                                                        } else {
+                                                            var pop = regionData['population'];
+                                                            var depensesAbs = data['depensesAbs'];
+                                                            tableStat += '<td><span class="badge badge-number">'
+                                                                + (depensesAbs  / pop ).toFixed(1) + '</span></td>';
+                                                        }
                                                     }
                                                 });
 

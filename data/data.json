@@ -1,112 +1,5 @@
 {
-  "1": {
-    "id": 1,
-    "nom": "Guadeloupe",
-    "population": 399178,
-    "index": 26,
-    "bibliotheques": {
-      "offreAbs": 15,
-      "offreRel": 0.00000831761304467889,
-      "freqRel": 0.35,
-      "depensesRel": 0.94
-    },
-    "musees": {
-      "offreAbs": 6,
-      "offreRel": 0.00000332704521787156,
-      "freqAbs": 14589,
-      "freqRel": 0.00808971044725469,
-      "depensesAbs": 1912,
-      "depensesRel": 2.06
-    },
-     "artetessai": {
-      "offreAbs": 0,
-      "freqRel": 0,
-      "depensesAbs": 0,
-      "depensesRel": 0
-    }
-  },
-  "2": {
-    "id": 2,
-    "nom": "Martinique",
-    "population": 395982,
-    "index": 23,
-    "bibliotheques": {
-      "offreAbs": 15,
-      "offreRel": 0.00000831761304467889,
-      "freqRel": 0.9,
-      "depensesRel": 1.02
-    },
-    "musees": {
-      "offreAbs": 6,
-      "offreRel": 0.00000332704521787156,
-      "freqAbs": 47428,
-      "freqRel": 0.026299183432202,
-      "depensesAbs": 3200,
-      "depensesRel": 3.29
-    },
-     "artetessai": {
-      "offreAbs": 0,
-      "freqRel": 0,
-      "depensesAbs": 0,
-      "depensesRel": 0
-    }
-  },
-  "3": {
-    "id": 3,
-    "nom": "Guyane",
-    "population": 199206,
-    "index": 25,
-    "bibliotheques": {
-      "offreAbs": 2,
-      "offreRel": 0.00000110901507262385,
-      "freqRel": 0.65,
-      "depensesRel": 0.46
-    },
-    "musees": {
-      "offreAbs": 3,
-      "offreRel": 0.00000166352260893578,
-      "freqAbs": 19642,
-      "freqRel": 0.0108916370282389,
-      "depensesAbs": 2194,
-      "depensesRel": 1.93
-    },
-     "artetessai": {
-      "offreAbs": 0,
-      "freqRel": 0,
-      "depensesAbs": 0,
-      "depensesRel": 0
-    }
-  },
-  "4": {
-    "id": 4,
-    "nom": "La Réunion",
-    "population": 772907,
-    "index": 21,
-    "bibliotheques": {
-      "offreAbs": 18,
-      "offreRel": 0.00000998113565361467,
-      "freqRel": 2.2,
-      "depensesRel": 2.47
-    }
-  },
-  "6": {
-    "id": 6,
-    "nom": "Mayotte",
-    "population": null,
-    "index": 24,
-    "bibliotheques": {
-      "offreAbs": 2,
-      "offreRel": 0.00000110901507262385,
-      "freqRel": 0.87,
-      "depensesRel": 1
-    },
-     "artetessai": {
-      "offreAbs": 0,
-      "freqRel": 0,
-      "depensesAbs": 0,
-      "depensesRel": 0
-    }
-  },
+  
   "11": {
     "id": 11,
     "nom": "Île-de-France",
@@ -133,11 +26,10 @@
       "depensesRel": 6.94,
       "offreRel":0.000087746
     },
-    "artetessai": {
-      "offreAbs": 317,
-      "freqRel": 14.9,
-      "depensesAbs": 228521,
-      "depensesRel": 6.94
+    "musique": {
+      "offreAbs": 18,
+      "freqAbs": 19752,
+      "depensesAbs": 8107000
     }
   },
   "21": {
@@ -166,11 +58,10 @@
       "depensesRel": 4.14,
       "offreRel":0.000073914
     },
-    "artetessai": {
-      "offreAbs": 44,
-      "freqRel": 12.1,
-      "depensesAbs": 27875,
-      "depensesRel": 4.14
+    "musique": {
+      "offreAbs": 4,
+      "freqAbs": 473,
+      "depensesAbs": 2210000
     }
   },
   "22": {
@@ -198,11 +89,10 @@
       "depensesAbs": 25540,
       "depensesRel": 2.42
     },
-    "artetessai": {
-      "offreAbs": 59,
-      "freqRel": 11.6,
-      "depensesAbs": 25540,
-      "depensesRel": 2.42
+    "musique": {
+      "offreAbs": 5,
+      "freqAbs": 494,
+      "depensesAbs": 1229000
     }
   },
   "23": {
@@ -230,11 +120,10 @@
       "depensesAbs": 42623,
       "depensesRel": 5.14
     },
-    "artetessai": {
-      "offreAbs": 58,
-      "freqRel": 10.6,
-      "depensesAbs": 42623,
-      "depensesRel": 5.14
+    "musique": {
+      "offreAbs": 5,
+      "freqAbs": 655,
+      "depensesAbs": 2143000
     }
   },
   "24": {
@@ -262,11 +151,10 @@
       "depensesAbs": 42640,
       "depensesRel": 4.45
     },
-    "artetessai": {
-      "offreAbs": 101,
-      "freqRel": 14.8,
-      "depensesAbs": 42640,
-      "depensesRel": 4.45
+    "musique": {
+      "offreAbs": 6,
+      "freqAbs": 1003,
+      "depensesAbs": 2540000
     }
   },
   "25": {
@@ -294,11 +182,10 @@
       "depensesAbs": 29899,
       "depensesRel": 4.42
     },
-    "artetessai": {
-      "offreAbs": 77,
-      "freqRel": 13,
-      "depensesAbs": 29899,
-      "depensesRel": 4.42
+    "musique": {
+      "offreAbs": 4,
+      "freqAbs": 674,
+      "depensesAbs": 2003000
     }
   },
   "26": {
@@ -326,11 +213,10 @@
       "depensesAbs": 31905,
       "depensesRel": 4.85
     },
-    "artetessai": {
-      "offreAbs": 75,
-      "freqRel": 11.9,
-      "depensesAbs": 31905,
-      "depensesRel": 4.85
+    "musique": {
+      "offreAbs": 7,
+      "freqAbs": 870,
+      "depensesAbs": 2252000
     }
   },
   "31": {
@@ -358,11 +244,10 @@
       "depensesAbs": 78506,
       "depensesRel": 4.15
     },
-    "artetessai": {
-      "offreAbs": 80,
-      "freqRel": 14.6,
-      "depensesAbs": 78506,
-      "depensesRel": 4.15
+    "musique": {
+      "offreAbs": 4,
+      "freqAbs": 1703,
+      "depensesAbs": 2240000
     }
   },
   "41": {
@@ -390,11 +275,10 @@
       "depensesAbs": 46449,
       "depensesRel": 4.72
     },
-    "artetessai": {
-      "offreAbs": 69,
-      "freqRel": 13.6,
-      "depensesAbs": 46449,
-      "depensesRel": 4.72
+    "musique": {
+      "offreAbs": 2,
+      "freqAbs": 699,
+      "depensesAbs": 1319000
     }
   },
   "42": {
@@ -422,11 +306,10 @@
       "depensesAbs": 64935,
       "depensesRel": 8.2
     },
-    "artetessai": {
-      "offreAbs": 46,
-      "freqRel": 11,
-      "depensesAbs": 64935,
-      "depensesRel": 8.2
+    "musique": {
+      "offreAbs": 5,
+      "freqAbs": 764,
+      "depensesAbs": 1032000
     }
   },
   "43": {
@@ -454,11 +337,10 @@
       "depensesAbs": 26298,
       "depensesRel": 5.66
     },
-    "artetessai": {
-      "offreAbs": 65,
-      "freqRel": 10.8,
-      "depensesAbs": 26298,
-      "depensesRel": 5.66
+    "musique": {
+      "offreAbs": 7,
+      "freqAbs": 459,
+      "depensesAbs": 1204000
     }
   },
   "52": {
@@ -478,11 +360,10 @@
       "depensesAbs": 54513,
       "depensesRel": 4.37
     },
-    "artetessai": {
-      "offreAbs": 173,
-      "freqRel": 16.1,
-      "depensesAbs": 54513,
-      "depensesRel": 4.37
+    "musique": {
+      "offreAbs": 9,
+      "freqAbs": 2263,
+      "depensesAbs": 710000
     },
     "musees": {
       "offreAbs": 38,
@@ -518,11 +399,10 @@
       "depensesAbs": 54513,
       "depensesRel": 4.37
     },
-    "artetessai": {
-      "offreAbs": 173,
-      "freqRel": 16.1,
-      "depensesAbs": 54513,
-      "depensesRel": 4.37
+    "musique": {
+      "offreAbs": 9,
+      "freqAbs": 1873,
+      "depensesAbs": 4197000
     }
   },
   "54": {
@@ -550,11 +430,10 @@
       "depensesAbs": 40115,
       "depensesRel": 6.53
     },
-    "artetessai": {
-      "offreAbs": 69,
-      "freqRel": 12.5,
-      "depensesAbs": 40115,
-      "depensesRel": 6.53
+    "musique": {
+      "offreAbs": 15,
+      "freqAbs": 834,
+      "depensesAbs": 3879000
     }
   },
   "72": {
@@ -582,11 +461,10 @@
       "depensesAbs": 59647,
       "depensesRel": 3.67
     },
-    "artetessai": {
-      "offreAbs": 171,
-      "freqRel": 14,
-      "depensesAbs": 59647,
-      "depensesRel": 3.67
+    "musique": {
+      "offreAbs": 11,
+      "freqAbs": 1626,
+      "depensesAbs": 4239000
     }
   },
   "73": {
@@ -614,11 +492,10 @@
       "depensesAbs": 72461,
       "depensesRel": 5.25
     },
-    "artetessai": {
-      "offreAbs": 140,
-      "freqRel": 15.3,
-      "depensesAbs": 72461,
-      "depensesRel": 5.25
+    "musique": {
+      "offreAbs": 6,
+      "freqAbs": 1977,
+      "depensesAbs": 936000
     }
   },
   "74": {
@@ -646,11 +523,10 @@
       "depensesAbs": 17831,
       "depensesRel": 7.24
     },
-    "artetessai": {
-      "offreAbs": 40,
-      "freqRel": 10.5,
-      "depensesAbs": 17831,
-      "depensesRel": 7.24
+    "musique": {
+      "offreAbs": 4,
+      "freqAbs": 305,
+      "depensesAbs": 480000
     }
   },
   "82": {
@@ -678,11 +554,10 @@
       "depensesAbs": 151002,
       "depensesRel": 6.18
     },
-    "artetessai": {
-      "offreAbs": 244,
-      "freqRel": 14.7,
-      "depensesAbs": 151002,
-      "depensesRel": 6.18
+    "musique": {
+      "offreAbs": 10,
+      "freqAbs": 3497,
+      "depensesAbs": 5947000
     }
   },
   "83": {
@@ -710,11 +585,10 @@
       "depensesAbs": 20516,
       "depensesRel": 4.15
     },
-    "artetessai": {
-      "offreAbs": 66,
-      "freqRel": 13.4,
-      "depensesAbs": 20516,
-      "depensesRel": 4.15
+    "musique": {
+      "offreAbs": 5,
+      "freqAbs": 765,
+      "depensesAbs": 177000
     }
   },
   "91": {
@@ -742,11 +616,10 @@
       "depensesAbs": 62301,
       "depensesRel": 5.65
     },
-    "artetessai": {
-      "offreAbs": 87,
-      "freqRel": 15.2,
-      "depensesAbs": 62301,
-      "depensesRel": 5.65
+    "musique": {
+      "offreAbs": 1,
+      "freqAbs": 1159,
+      "depensesAbs": 365000
     }
   },
   "93": {
@@ -774,11 +647,10 @@
       "depensesAbs": 228521,
       "depensesRel": 6.94
     },
-    "artetessai": {
-      "offreAbs": 87,
-      "freqRel": 15.2,
-      "depensesAbs": 62301,
-      "depensesRel": 5.65
+    "musique": {
+      "offreAbs": 15,
+      "freqAbs": 2776,
+      "depensesAbs": 3879000
     }
   },
   "94": {
@@ -792,12 +664,10 @@
       "freqRel": 1.73,
       "depensesRel": 1.59
     },
-     "artetessai": {
+     "musique": {
       "offreAbs": 0,
-      "offreRel": 0,
-      "freqRel": 0,
-      "depensesAbs": 0,
-      "depensesRel": 0
+      "freqAbs": 47,
+      "depensesAbs": 0
     }
   }
 }
