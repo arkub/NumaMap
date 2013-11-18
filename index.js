@@ -369,7 +369,7 @@
                                         + '<thead><tr><th></th>'
                                         + '<th><i class="fa fa-building-o header number" title="Nombre d\'établissements par million d\'habitants" data-placement="top"></i></th>'
                                         + '<th><i class="fa fa-group header freq" title="Indice de fréquentation" data-placement="top"></i></th>'
-                                        + '<th><i class="fa fa-euro header sub" title="Indice de subvention" data-placement="top"></i></th>'
+                                        + '<th><i class="fa fa-euro header sub" title="Dépense publique par habitant" data-placement="top"></i></th>'
                                         + '</tr></thead><tbody>';
 
                                 _
